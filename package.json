@@ -84,7 +84,7 @@
     "testEnvironment": "node",
     "verbose": true,
     "collectCoverageFrom": [
-      "server/**/*.js"
+      "src/server/**/*.ts"
     ],
     "coverageDirectory": "./test/coverage",
     "testResultsProcessor": "jest-sonar-reporter",
