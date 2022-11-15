@@ -1,3 +1,4 @@
+import { buildReq, buildRes } from '../utils/testUtils'
 // Test data
 //
 const applicationPaths = {
@@ -41,27 +42,6 @@ jest.mock('@kth/mongo', () => ({
   connect: jest.fn(),
   isOk: jest.fn(() => true),
 }))
-
-/*
- * utility functions
- */
-function buildReq(overrides) {
-  const req = { headers: { accept: 'application/json' }, body: {}, params: {}, ...overrides }
-  return req
-}
-
-function buildRes(overrides = {}) {
-  const res = {
-    json: jest.fn(() => res).mockName('json'),
-    status: jest.fn(() => res).mockName('status'),
-    type: jest.fn(() => res).mockName('type'),
-    send: jest.fn(() => res).mockName('send'),
-    render: jest.fn(() => res).mockName('render'),
-
-    ...overrides,
-  }
-  return res
-}
 
 describe(`System controller`, () => {
   beforeEach(() => {})
@@ -136,7 +116,7 @@ describe(`System controller`, () => {
 
     const { swagger } = require('./systemCtrl')
     await swagger(req, res)
-    const swaggerData = require('../../swagger.json')
+    const swaggerData = require('../../../swagger.json')
     expect(res.json).toHaveBeenNthCalledWith(1, swaggerData)
   })
 
@@ -147,7 +127,7 @@ describe(`System controller`, () => {
     const fs = require('fs')
     const swaggerUrl = `/api/node/swagger.json`
     const swaggerIndexHtml = fs
-      .readFileSync(path.resolve(__dirname, '../../node_modules/swagger-ui-dist/swagger-initializer.js'), 'utf8')
+      .readFileSync(path.resolve(__dirname, '../../../node_modules/swagger-ui-dist/swagger-initializer.js'), 'utf8')
       .toString()
 
     const petstoreUrl = 'https://petstore.swagger.io/v2/swagger.json'
@@ -164,3 +144,4 @@ describe(`System controller`, () => {
     expect(res.send).toHaveBeenNthCalledWith(1, patchedSwaggerIndexHtml)
   })
 })
+export {}

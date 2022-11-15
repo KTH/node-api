@@ -1,12 +1,14 @@
 'use strict'
 
+import { Schema, model } from 'mongoose'
 /**
  * Sample API model. Can safely be removed.
  */
-
-const mongoose = require('mongoose')
-
-const schema = new mongoose.Schema({
+interface ISample {
+  _id: string
+  name: string
+}
+const schema = new Schema<ISample>({
   _id: String,
   name: {
     type: String,
@@ -18,4 +20,4 @@ const schema = new mongoose.Schema({
   },
 })
 
-module.exports = mongoose.model('Sample', schema)
+export default model<ISample>('Sample', schema)

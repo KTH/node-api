@@ -1,17 +1,63 @@
-/* eslint-disable no-use-before-define */
-
 'use strict'
 
 const { Agenda } = require('agenda')
 const mongoose = require('mongoose')
 const log = require('@kth/log')
 
-const packageFile = require('../../package.json')
+const packageFile = require('../../../package.json')
 const jobs = require('./jobs')
 
-const worker = { status: 'Startup', agenda: null, isStatusOkay, getLastRunJobs }
+interface WorkerType {
+  status: string
+  agenda: any | null
+  isFine: boolean
+}
 
-module.exports = worker
+function setAgendaIsFine() {
+  worker.isFine = true
+}
+
+function setAgendaHadProblem() {
+  worker.isFine = false
+}
+
+/**
+ * Check if agenda status is ok once per hour
+ */
+async function isStatusOkay() {
+  const currentProbeTime = new Date()
+  currentProbeTime.setHours(new Date().getHours() - 1)
+
+  log.debug('AGENDA: currentProbeTime: ', currentProbeTime)
+  log.debug('AGENDA: lastAgendaProbeTime: ', lastAgendaProbeTime)
+  if (lastAgendaProbeTime < currentProbeTime) {
+    await showCurrentSchedule()
+    await isAgendaOk()
+  }
+
+  return worker.isFine
+}
+
+const worker: WorkerType = { status: 'Startup', agenda: null, isFine: true }
+
+function getErrorMessage(error: unknown) {
+  if (error instanceof Error) return error.message
+  return String(error)
+}
+
+interface AgendaJob {
+  attrs: {
+    name: string
+    failReason: string
+    failedAt: Date
+    lastRunAt: Date
+    lastFinishedAt: Date
+    nextRunAt: Date
+    type: string
+  }
+  fail: (e?: Error) => void
+  save: () => void
+}
 
 let agendaInitialized = false
 let lastAgendaProbeTime = new Date()
@@ -22,8 +68,8 @@ let errorCount = 0
  */
 async function _cancel() {
   try {
-    const currentJobs = await worker.agenda.jobs()
-    await Promise.all(currentJobs.map(job => worker.agenda.cancel({ name: job.attrs.name })))
+    const currentJobs: [AgendaJob] = (await worker?.agenda?.jobs()) || []
+    await Promise.all(currentJobs.map(job => worker.agenda.cancel({ name: job.attrs.name })) || [])
     log.info(`AGENDA: Canceled ${currentJobs.length} jobs`)
   } catch (e) {
     log.debug('AGENDA: Could not cancel jobs')
@@ -88,34 +134,34 @@ async function initAgenda() {
       } catch (e) {
         setAgendaHadProblem()
         errorCount += 1
-        worker.status = 'Error: ' + e.message
+        worker.status = 'Error: ' + getErrorMessage(e)
         log.fatal({ err: e }, 'AGENDA: error during setup')
       }
     })
 
-    agenda.on('start', job => {
+    agenda.on('start', (job: AgendaJob) => {
       setAgendaIsFine()
       log.info(`AGENDA: Agenda start event triggered. ${job.attrs.name} job started`)
     })
 
-    agenda.on('complete', job => {
+    agenda.on('complete', (job: AgendaJob) => {
       setAgendaIsFine()
       log.info(`AGENDA: Agenda complete event triggered. ${job.attrs.name} job stopped`)
     })
 
-    agenda.on('success', job => {
+    agenda.on('success', (job: AgendaJob) => {
       setAgendaIsFine()
       log.info(`AGENDA: Agenda success event triggered. ${job.attrs.name} job successful`)
     })
 
-    agenda.on('error', err => {
+    agenda.on('error', (err: Error) => {
       setAgendaHadProblem()
       errorCount += 1
       worker.status = 'Error: ' + err.message
       log.fatal({ err }, `AGENDA: Agenda error event triggered. ${errorCount}`)
     })
 
-    agenda.on('fail', (err, job) => {
+    agenda.on('fail', (err: Error, job: AgendaJob) => {
       setAgendaIsFine() // Agenda is still working fine after a failure of a job
       log.error({ err }, `AGENDA: Agenda fail event triggered. ${job.attrs.name} job failed`)
     })
@@ -179,31 +225,6 @@ async function restartAgenda() {
   await showCurrentSchedule()
 }
 
-function setAgendaIsFine() {
-  worker.isFine = true
-}
-
-function setAgendaHadProblem() {
-  worker.isFine = false
-}
-
-/**
- * Check if agenda status is ok once per hour
- */
-async function isStatusOkay() {
-  const currentProbeTime = new Date()
-  currentProbeTime.setHours(new Date().getHours() - 1)
-
-  log.debug('AGENDA: currentProbeTime: ', currentProbeTime)
-  log.debug('AGENDA: lastAgendaProbeTime: ', lastAgendaProbeTime)
-  if (lastAgendaProbeTime < currentProbeTime) {
-    await showCurrentSchedule()
-    await isAgendaOk()
-  }
-
-  return worker.isFine
-}
-
 /**
  * Check if agenda is responding by asking for its stored jobs.
  */
@@ -233,11 +254,22 @@ async function isAgendaOk() {
 /**
  * Get jobs run the last 24h
  */
-async function getLastRunJobs() {
+async function getLastRunJobs(): Promise<
+  Array<{
+    name: string
+    type: string
+    lastRunAt: Date
+    lastFinishedAt: Date
+    nextRunAt: Date
+    failedAt: Date
+    failReason: string
+  }>
+> {
   try {
-    const lastRunJobs = await worker.agenda.jobs({
-      lastRunAt: { $gt: new Date(new Date().setHours(new Date().getHours() - 24)) },
-    })
+    const lastRunJobs: [AgendaJob] =
+      (await worker.agenda.jobs({
+        lastRunAt: { $gt: new Date(new Date().setHours(new Date().getHours() - 24)) },
+      })) || []
 
     return lastRunJobs.map(job => ({
       name: job.attrs.name,
@@ -250,6 +282,8 @@ async function getLastRunJobs() {
     }))
   } catch (err) {
     log.error('getLastRunJobs:  Agenda is not responding in ' + packageFile.name, err)
-    return false
+    return []
   }
 }
+export default worker
+export { isStatusOkay, getLastRunJobs }

@@ -7,7 +7,7 @@ const log = require('@kth/log')
 const config = require('./server/configuration').server
 const server = require('./server/server')
 
-const packageFile = require('./package.json')
+const packageFile = require('../package.json')
 
 // catches uncaught exceptions
 process.on('uncaughtException', (err, origin) => {
@@ -30,15 +30,15 @@ process.on('unhandledRejection', reason => {
 function checkEnvironment() {
   try {
     log.info(`Checking environment variables from .env.ini file.`)
-    const lines = fs
+    const lines: Array<string> = fs
       .readFileSync('./.env.ini')
       .toString()
       .split('\n')
-      .filter(l => l.trim() && !l.startsWith('#'))
-      .filter(l => l)
+      .filter((l: string) => l && l.trim() && !l.startsWith('#'))
+      .filter((l: string) => l)
 
     const isDevelopment = process.env.NODE_ENV !== 'production'
-    lines.forEach(l => {
+    lines.forEach((l: string) => {
       const name = l.substring(0, l.indexOf('=')).trim()
       if (name && process.env[name] !== undefined) {
         log.debug(`   Environment variable '${name}' found`)
@@ -59,7 +59,7 @@ checkEnvironment()
  * ******* SERVER START *******
  * ****************************
  */
-module.exports = server.start({
+export default server.start({
   useSsl: config.useSsl,
   pfx: config.ssl.pfx,
   passphrase: config.ssl.passphrase,

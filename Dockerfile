@@ -42,16 +42,18 @@ COPY --chown=node:node ["package.json", "package.json"]
 COPY --chown=node:node ["package-lock.json", "package-lock.json"]
 
 RUN npm pkg delete scripts.prepare && \
-    npm ci --production --no-optional --unsafe-perm
+    npm ci  --no-optional --unsafe-perm
 
 #
 # Copy the files needed for the application to run.
 #
-COPY --chown=node:node ["config", "config"]
-COPY --chown=node:node ["server", "server"]
-COPY --chown=node:node ["app.js", "app.js"]
+COPY --chown=node:node ["src", "src"]
 COPY --chown=node:node ["swagger.json", "swagger.json"]
 COPY --chown=node:node [".env.ini", ".env.ini"]
+COPY --chown=node:node ["tsconfig.json", "tsconfig.json"]
+
+RUN npm run build && \
+    npm prune --production 
 
 #
 # Port that the application will expose.
@@ -61,4 +63,4 @@ EXPOSE 3001
 #
 # The command that is executed when an instance of this image is run.
 #
-CMD ["bash", "-c", "/wait; cat /KTH_NODEJS; NODE_ENV=production node app.js"]
+CMD ["npm", "start"]

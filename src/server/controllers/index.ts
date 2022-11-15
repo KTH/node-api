@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = {
+export = {
   // Do not remove the System controller!
   System: require('./systemCtrl'),
 

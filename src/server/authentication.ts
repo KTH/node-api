@@ -1,14 +1,18 @@
 'use strict'
 
+// eslint-disable-next-line no-shadow
+import { Request } from 'express'
+
 const log = require('@kth/log')
 const apiKey = require('kth-node-api-key-strategy')
 const passport = require('passport')
 const config = require('./configuration').server
+
 const server = require('./server')
 
 const ApiKeyStrategy = apiKey.Strategy
 const options = { log }
-const verify = (req, apikey, done) => {
+const verify = (req: Request, apikey: string, done: () => void) => {
   apiKey.verifyApiKey(req, apikey, config.api_keys, done)
 }
 const strategy = new ApiKeyStrategy(options, verify)

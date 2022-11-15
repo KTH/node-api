@@ -1,4 +1,10 @@
 {
   "root": true,
-  "extends": ["@kth/eslint-config-kth"]
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "extends": [
+    "@kth/eslint-config-kth",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ]
 }

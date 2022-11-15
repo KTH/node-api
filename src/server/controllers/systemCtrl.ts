@@ -1,28 +1,33 @@
 'use strict'
 
+// eslint-disable-next-line no-shadow
 const os = require('os')
 const fs = require('fs')
+// eslint-disable-next-line no-shadow
+import { NextFunction, Request, Response } from 'express'
+
+const version = require('../../config/version')
+
 const log = require('@kth/log')
 const db = require('@kth/mongo')
 const { getPaths } = require('kth-node-express-routing')
 const monitorSystems = require('@kth/monitor')
-
 const configServer = require('../configuration').server
-const version = require('../../config/version')
-const packageFile = require('../../package.json')
-const Agenda = require('../jobs/worker')
+const packageFile = require('../../../package.json')
 
+import { isStatusOkay, getLastRunJobs } from '../jobs/worker'
 /**
  * Adds a zero (0) to numbers less then ten (10)
  */
-function zeroPad(value) {
-  return value < 10 ? '0' + value : value
+function zeroPad(value: number) {
+  return value.toString(10).padStart(2, '0')
+  // return value < 10 ? '0' + value : value
 }
 
 /**
  * Takes a Date object and returns a simple date string.
  */
-function _simpleDate(date) {
+function _simpleDate(date: Date) {
   const year = date.getFullYear()
   const month = zeroPad(date.getMonth() + 1)
   const day = zeroPad(date.getDate())
@@ -40,15 +45,15 @@ const started = _simpleDate(new Date())
  * GET /swagger.json
  * Swagger config
  */
-function getSwagger(req, res) {
-  res.json(require('../../swagger.json'))
+function getSwagger(req: Request, res: Response) {
+  res.json(require('../../../swagger.json'))
 }
 
 /**
  * GET /swagger
  * Swagger
  */
-function getSwaggerUI(req, res) {
+function getSwaggerUI(req: Request, res: Response) {
   const pathToSwaggerUi = require('swagger-ui-dist').absolutePath()
   const swaggerUrl = configServer.proxyPrefixPath.uri + '/swagger.json'
   const petstoreUrl = 'https://petstore.swagger.io/v2/swagger.json'
@@ -65,7 +70,7 @@ function getSwaggerUI(req, res) {
  * GET /_about
  * About page
  */
-async function getAbout(req, res) {
+async function getAbout(req: Request, res: Response) {
   const paths = getPaths()
   const aboutData = {
     appName: packageFile.name,
@@ -98,7 +103,7 @@ async function getAbout(req, res) {
  * GET /_monitor
  * Monitor page
  */
-async function getMonitor(req, res) {
+async function getMonitor(req: Request, res: Response) {
   try {
     await monitorSystems(req, res, [
       {
@@ -109,7 +114,7 @@ async function getMonitor(req, res) {
       {
         key: 'agenda',
         required: false,
-        agendaState: await Agenda.isStatusOkay(),
+        agendaState: await isStatusOkay(),
       },
 
       {
@@ -129,7 +134,7 @@ async function getMonitor(req, res) {
  * GET /robots.txt
  * Robots.txt page
  */
-function getRobotsTxt(req, res) {
+function getRobotsTxt(req: Request, res: Response) {
   res.type('text').render('system/robots', {
     layout: '',
   })
@@ -139,25 +144,25 @@ function getRobotsTxt(req, res) {
  * GET /_paths
  * Return all paths for the system
  */
-function getPathsHandler(req, res) {
+function getPathsHandler(req: Request, res: Response) {
   res.json(getPaths())
 }
 
-function getCheckAPIKey(req, res) {
+function getCheckAPIKey(req: Request, res: Response) {
   res.end()
 }
 /**
  * GET /_status
  * Status - dynamic status information about the application.
  */
-async function getStatus(req, res) {
+async function getStatus(req: Request, res: Response) {
   const statusData = {
     appName: packageFile.name,
     appVersion: packageFile.version,
     hostname: os.hostname(),
     started,
     env: process.env.NODE_ENV,
-    jobs: await Agenda.getLastRunJobs(),
+    jobs: await getLastRunJobs(),
   }
   if (req.headers.accept === 'application/json') {
     return res.json(statusData)
@@ -168,7 +173,7 @@ async function getStatus(req, res) {
  * System controller for functions such as about and monitor.
  * Avoid making changes here in sub-projects.
  */
-module.exports = {
+export = {
   monitor: getMonitor,
   about: getAbout,
   robotsTxt: getRobotsTxt,

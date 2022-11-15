@@ -12,13 +12,15 @@ const mongoOptions = {
   logger: log,
 }
 
-module.exports.connect = function connect() {
-  nodeMongo
-    .connect(mongoOptions)
-    .then(() => {
-      log.info('MongoDB: connected')
-    })
-    .catch(err => {
-      log.error({ err }, 'MongoDB: ERROR connecting DB')
-    })
+export = {
+  connect: function connect() {
+    nodeMongo
+      .connect(mongoOptions)
+      .then(() => {
+        log.info('MongoDB: connected')
+      })
+      .catch((err: Error) => {
+        log.error({ err }, 'MongoDB: ERROR connecting DB')
+      })
+  },
 }

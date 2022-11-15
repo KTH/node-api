@@ -1,5 +1,8 @@
 /* eslint-disable import/order */
 
+// eslint-disable-next-line no-shadow
+import { Express, Request, Response } from 'express'
+
 // Load .env file in development mode
 const nodeEnv = process.env.NODE_ENV && process.env.NODE_ENV.toLowerCase()
 if (nodeEnv === 'development' || nodeEnv === 'dev' || !nodeEnv) {
@@ -22,7 +25,7 @@ const logConfiguration = {
 }
 log.init(logConfiguration)
 
-const server = require('@kth/server')
+const server: Express = require('@kth/server')
 const path = require('path')
 
 const AppRouter = require('kth-node-express-routing').PageRouter
@@ -30,8 +33,6 @@ const { getPaths } = require('kth-node-express-routing')
 
 // Expose the server and paths
 server.locals.secret = new Map()
-module.exports = server
-module.exports.getPaths = () => getPaths()
 
 /* **************************
  * ******* TEMPLATING *******
@@ -89,7 +90,7 @@ const { createApiPaths, notFoundHandler, errorHandler } = require('kth-node-api-
 const swaggerData = require('../swagger.json')
 const { System } = require('./controllers')
 
-const _addProxy = uri => `${config.proxyPrefixPath.uri}${uri}`
+const _addProxy = (uri: string) => `${config.proxyPrefixPath.uri}${uri}`
 
 // System pages routes
 const systemRoute = AppRouter()
@@ -148,4 +149,4 @@ server.use(errorHandler)
  */
 require('./jobs/worker')
 
-module.exports = server
+export = { getPaths, server }

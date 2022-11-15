@@ -2,7 +2,7 @@
 
 const log = require('@kth/log')
 
-const cleanUp = async () => {
+const cleanUp = async (when: number) => {
   log.info('cleanUp: removing old stuff')
 }
 /**
@@ -22,6 +22,6 @@ async function start() {
   }
 }
 
-module.exports = {
+export = {
   start,
 }

@@ -1,10 +1,13 @@
+// eslint-disable-next-line no-shadow
+import { Request, Response, NextFunction } from 'express'
+
 const config = require('./configuration').server
 
 /**
  * Middleware to filter out swagger files
  */
 const swaggerFilesRE = /(index|swagger-ui|favicon|swagger-initializer).*\.(css|js|png|html)/
-function swaggerHandler(req, res, next) {
+function swaggerHandler(req: Request, res: Response, next: NextFunction) {
   if (
     req.originalUrl === config.proxyPrefixPath.uri + '/swagger' ||
     req.originalUrl === config.proxyPrefixPath.uri + '/swagger/'
@@ -25,6 +28,6 @@ function swaggerHandler(req, res, next) {
   return next()
 }
 
-module.exports = {
+export = {
   swaggerHandler,
 }
