@@ -1,9 +1,12 @@
 'use strict'
 
-export = {
+const System = require('./systemCtrl')
+const Sample = require('./sampleCtrl')
+
+export {
   // Do not remove the System controller!
-  System: require('./systemCtrl'),
+  System,
 
   // Replace with actual API controller
-  Sample: require('./sampleCtrl'),
+  Sample,
 }

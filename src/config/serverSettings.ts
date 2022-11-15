@@ -20,7 +20,7 @@ const devApiKeys = devDefaults('?name=devClient&apiKey=1234&scope=write&scope=re
 
 // END DEFAULT SETTINGS
 
-module.exports = {
+export default {
   // The proxy prefix path if the application is proxied. E.g /places
   proxyPrefixPath: {
     uri: getEnv('SERVICE_PUBLISH', devPrefixPath),

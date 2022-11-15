@@ -2,7 +2,7 @@
 
 const log = require('@kth/log')
 const nodeMongo = require('@kth/mongo')
-const config = require('./configuration').server
+import { serverConfig as config } from './configuration'
 
 const mongoOptions = {
   user: config.db.username,
@@ -11,16 +11,14 @@ const mongoOptions = {
   dbUri: config.db.authDatabase !== '' ? config.db.uri + `?authSource=${config.db.authDatabase}` : config.db.uri,
   logger: log,
 }
-
-export = {
-  connect: function connect() {
-    nodeMongo
-      .connect(mongoOptions)
-      .then(() => {
-        log.info('MongoDB: connected')
-      })
-      .catch((err: Error) => {
-        log.error({ err }, 'MongoDB: ERROR connecting DB')
-      })
-  },
+function connect() {
+  nodeMongo
+    .connect(mongoOptions)
+    .then(() => {
+      log.info('MongoDB: connected')
+    })
+    .catch((err: Error) => {
+      log.error({ err }, 'MongoDB: ERROR connecting DB')
+    })
 }
+export { connect }

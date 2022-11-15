@@ -1,7 +1,6 @@
 // eslint-disable-next-line no-shadow
 import { Request, Response, NextFunction } from 'express'
-
-const config = require('./configuration').server
+import { serverConfig as config } from './configuration'
 
 /**
  * Middleware to filter out swagger files
@@ -28,6 +27,4 @@ function swaggerHandler(req: Request, res: Response, next: NextFunction) {
   return next()
 }
 
-export = {
-  swaggerHandler,
-}
+export { swaggerHandler }

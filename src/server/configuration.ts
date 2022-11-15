@@ -1,10 +1,10 @@
 'use strict'
 
+// These settings are used by the server
+import serverSettings from '../config/serverSettings'
+
 const { generateConfig } = require('kth-node-configuration')
 
-// These settings are used by the server
-const serverConfig = generateConfig([require('../config/serverSettings')])
+const serverConfig = generateConfig([serverSettings])
 
-export = {
-  server: serverConfig,
-}
+export { serverConfig }

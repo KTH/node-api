@@ -19,8 +19,8 @@ jest.mock('@kth/log', () => ({
   error: jest.fn(() => {}),
 }))
 
-jest.mock('../../server/configuration', () => ({
-  server: {
+jest.mock('../configuration', () => ({
+  serverConfig: {
     api_keys: '1234',
     apiKey: {},
     nodeApi: {},

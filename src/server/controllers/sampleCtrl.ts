@@ -55,7 +55,4 @@ async function postData(req: Request, res: Response, next: NextFunction) {
   }
 }
 
-export = {
-  getData,
-  postData,
-}
+export { getData, postData }

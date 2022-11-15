@@ -7,7 +7,7 @@ if (nodeEnv === 'development' || nodeEnv === 'dev' || !nodeEnv) {
 }
 
 // Now read the server config etc.
-const config = require('./configuration').server
+import { serverConfig as config } from './configuration'
 
 /* ***********************
  * ******* LOGGING *******
@@ -108,7 +108,7 @@ const pathToSwaggerUi = require('swagger-ui-dist').absolutePath()
 
 const swaggerUrl = _addProxy('/swagger')
 
-const { swaggerHandler } = require('./swagger')
+import { swaggerHandler } from './swagger'
 
 server.use(swaggerUrl, swaggerHandler)
 server.use(swaggerUrl, express.static(pathToSwaggerUi))

@@ -12,10 +12,13 @@ const log = require('@kth/log')
 const db = require('@kth/mongo')
 const { getPaths } = require('kth-node-express-routing')
 const monitorSystems = require('@kth/monitor')
-const configServer = require('../configuration').server
+
+import { serverConfig as configServer } from '../configuration'
+
 const packageFile = require('../../../package.json')
 
 import { isStatusOkay, getLastRunJobs } from '../jobs/worker'
+
 /**
  * Adds a zero (0) to numbers less then ten (10)
  */
@@ -173,13 +176,13 @@ async function getStatus(req: Request, res: Response) {
  * System controller for functions such as about and monitor.
  * Avoid making changes here in sub-projects.
  */
-export = {
-  monitor: getMonitor,
-  about: getAbout,
-  robotsTxt: getRobotsTxt,
-  paths: getPathsHandler,
-  checkAPIKey: getCheckAPIKey,
-  swagger: getSwagger,
-  swaggerUI: getSwaggerUI,
-  status: getStatus,
+export {
+  getMonitor as monitor,
+  getAbout as about,
+  getRobotsTxt as robotsTxt,
+  getPathsHandler as paths,
+  getCheckAPIKey as checkAPIKey,
+  getSwagger as swagger,
+  getSwaggerUI as swaggerUI,
+  getStatus as status,
 }

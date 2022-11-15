@@ -4,8 +4,9 @@ require('dotenv').config()
 
 const fs = require('fs')
 const log = require('@kth/log')
-const config = require('./server/configuration').server
 const server = require('./server/server')
+
+import { serverConfig as config } from './server/configuration'
 
 const packageFile = require('../package.json')
 
