@@ -47,6 +47,7 @@ RUN npm pkg delete scripts.prepare && \
 #
 # Copy the files needed for the application to run.
 #
+COPY --chown=node:node ["config", "config"]
 COPY --chown=node:node ["src", "src"]
 COPY --chown=node:node ["swagger.json", "swagger.json"]
 COPY --chown=node:node [".env.ini", ".env.ini"]

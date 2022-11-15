@@ -6,7 +6,7 @@ const fs = require('fs')
 // eslint-disable-next-line no-shadow
 import { NextFunction, Request, Response } from 'express'
 
-const version = require('../../config/version')
+const version = require('../../../config/version')
 
 const log = require('@kth/log')
 const db = require('@kth/mongo')
