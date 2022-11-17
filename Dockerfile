@@ -47,11 +47,12 @@ RUN npm pkg delete scripts.prepare && \
 #
 # Copy the files needed for the application to run.
 #
-COPY --chown=node:node ["config", "config"]
-COPY --chown=node:node ["src", "src"]
-COPY --chown=node:node ["swagger.json", "swagger.json"]
-COPY --chown=node:node [".env.ini", ".env.ini"]
 COPY --chown=node:node ["tsconfig.json", "tsconfig.json"]
+COPY --chown=node:node ["webpack.config.js", "webpack.config.js"]
+COPY --chown=node:node ["config", "config"]
+COPY --chown=node:node [".env.ini", ".env.ini"]
+COPY --chown=node:node ["swagger.json", "swagger.json"]
+COPY --chown=node:node ["src", "src"]
 
 RUN npm run build && \
     npm prune --production 

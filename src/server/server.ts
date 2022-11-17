@@ -14,7 +14,7 @@ import { serverConfig as config } from './configuration'
  * ***********************
  */
 const log = require('@kth/log')
-const packageFile = require('../package.json')
+const packageFile = require('../../package.json')
 
 const logConfiguration = {
   name: packageFile.name,
@@ -86,7 +86,7 @@ require('./database').connect()
 const { addPaths } = require('kth-node-express-routing')
 
 const { createApiPaths, notFoundHandler, errorHandler } = require('kth-node-api-common')
-const swaggerData = require('../swagger.json')
+const swaggerData = require('../../swagger.json')
 const { System } = require('./controllers')
 
 const _addProxy = (uri: string) => `${config.proxyPrefixPath.uri}${uri}`

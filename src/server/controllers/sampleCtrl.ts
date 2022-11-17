@@ -15,8 +15,8 @@ import Sample from '../models/sample'
 async function getData(req: Request, res: Response, next: NextFunction) {
   try {
     log.debug(`Enter getData ${req.params.id}`)
-    let doc
-    doc = await Sample.findById(req.params.id)
+
+    const doc = await Sample.findById(req.params.id)
 
     if (!doc) {
       return res.status(404).json({ message: 'document not found' })
