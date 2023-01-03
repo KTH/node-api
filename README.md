@@ -1,123 +1,93 @@
 # Node-api
 
-## Template project for RESTful API:s
+_This is specifically written for the `coding-interview` branch. See `master` branch for a general introduction of the repository._
 
-In an attempt to simplify the process of starting up new Node.js based projects, there exists two template projects to use as a foundation.
+## Instructions
 
-The two projects are [node-web][web], a web server with express, and [node-api][api], a RESTful API.
-The node-web project CAS as a mechanism for authorisation and authentication.
+Make sure that the [Prerequisites](#prerequisites) are met, follow the steps in [Setup](#setup), and try out the application in [Getting started](#getting-started). Finally, try to solve the assignments in [Assignments](#assignments).
 
-### Where can I find the template projects?
+- Please use at least one commit per assigment.
+- Add comments where needed.
+- Update tests if necessary, and feel free to add addtional tests.
 
-- [https://github.com/KTH/node-api.git][api]
-- [https://github.com/KTH/node-web.git][web]
+If you run into problems, see [Troubleshooting](#troubleshooting).
 
-It's important that we try to make changes that affect the template projects in the template projects themselves to make sure that all other projects based on the templates get the good stuff.
+## Prerequisites
 
-### How do I use this template project for a project of my own?
+- [Git](https://git-scm.com/)
+- [Node.js](https://nodejs.org/) and [npm](https://docs.npmjs.com/cli/v9/commands/npm)
+- [Docker](https://www.docker.com/)
+- [GitHub account](https://github.com/join)
 
-1. Create a new repository on Gita or Github.
-2. Clone the node-api repository by using:
+## Setup
 
-   ```sh
-   git clone git@github.com:KTH/node-api.git NEW_REPOSITORY_NAME
-   ```
+- Clone this repository ([KTH/node-api](https://github.com/KTH/node-api)) or create a new repository with this repository as a template.
+- Switch to branch `coding-interview`.
+- Install the dependencies with `npm i`.
+- Start a MongoDB server instance with `npm run mongo:start`. (You can stop it with `npm run mongo:stop`.)
+- Start the application with `npm run start-dev`. (The terminal should display something similar to [Example of log output on start](#example-of-log-output-on-start).)
+- Verify that the Swagger UI is available on http://localhost:3001/api/node/swagger/.
 
-3. Navigate to the cloned project directory
+## Getting started
 
-4. Change remote repo
+- Authorization is managed with an `apiKey`. The default value is set to `1234` in `./config/serverSettings.js:19`. Press the _Authorize 🔓_ button in the Swagger UI, enter _1234_, press _Authorize_, and close the modal. Now, you can try the _GET /\_checkAPIkey_ endpoint. It will return response code `200` if you are authorized.
+- Try to save data to the database with the _POST /v1/data/{id}_ endpoint.
+- Then, try to retrieve the same data with the _GET /v1/data/{id}_ endpoint.
 
-   ```sh
-   git remote add origin https://github.com/KTH/<NEW_REPOSITORY_NAME>.git
-   ```
+## Assignments
 
-## How to configure the applications
+1. Change the data endpoints to handle values with `firstName` and `lastName`, instead of just `name`. Example: `{ "name": "John Doe" }` to `{ "firstName": "John", "lastName": "Doe"}`.
+2. Add `PUT` and `DELETE` data endpoints.
+3. Refactor data endpoints to person endpoints. Example: _GET /v1/data/{id}_ to _GET /v1/person/{id}_.
+4. Add room endpoints. Room data should have appropriate properties.
 
-Make sure you have a MongoDb connected. An easy way to add a MongoDb is to clone and start the following database repo on your local machine: https://gita.sys.kth.se/infosys/kth-node-backend
+### Extra credit
 
-```sh
-# Logging
-LOGGING_ACCESS_LOG=/{YOUR LOCAL PATH}/node-api/logs
-```
+- Make a rudimentary React app that uses the `node-api` as backend.
 
-Set your basePath property in `swagger.json`:
+## References
 
-```json
-{
-  "swagger": "2.0",
-  "info": {
-  "title": "Node API",
-    "description": "Template API project for Node.js",
-    "version": "1.0.0"
-  },
-  "basePath": "/api/node/v1",
-```
+### Troubleshooting
 
-Please, remember to set path to match your application.
+- If you have problems pushing, try `git push --no-verify`.
 
-### What is `swagger-ui`?
-
-The `swagger-ui` package is simply used to provide a basic UI for testing the API. It is not directly required in the code, which means running checks like `npm-check` will claim it is unused. It cannot be stressed enough, **do not remove this package**!
-
-### What can I customize?
-
-Follow the instructions for the files and folders below. For any files and folders not listed, avoid editing them in your custom project.
-
-- `/config`
-
-  Any and all configuration goes here. In particular you must edit the `serverSettings.js` file to match your project's proxy prefix path (e.g. `/api/node`). Other things you may want to edit are the environment specific files for the database connection config.
-
-  > **Important:**
-  > Remember not to put any sensible data into serverSettings.js. Secrets should be always be read from environment variables or the file "/.env".
-
-- `/server/models`
-
-  Anything in this folder can be edited to fit your project. You can safely remove the `sample.js` file and add your own mongoose-based schemas and models.
-
-- `/server.js`
-
-  Along with many other things, this file contains the routing config for the sample controller. Most of the content should only be edited in the template project. The paths for the routes come from the `swagger.json` file.
-
-- `/server/controllers/sampleCtrl.js`
-
-  This file contains the sample controller. You can either rename or remove this file. You can add your own controllers to this folder. Remember to add your custom controllers to the `index.js` file.
-
-- `/swagger.json`
-
-  This file contains the API configuration and documentation. You should add your own paths to this file. See the [Swagger website](https://swagger.io/) for documentation on the `swagger.json` format.
-
-- `/package.json`
-
-  Update the project name and add any dependencies you need. Excluding the testing scripts, avoid editing the scripts.
-
-## Common errors
-
-### useSsl
-
-When trying to run node-api as a standalone you might encounter the following error:
+### Example of log output on start
 
 ```
-return binding.open(pathModule._makeLong(path), stringToFlags(flags), mode);
+$ npm run start-dev
+
+> node-api@2.0.0 start-dev
+> bash -c 'NODE_ENV=development nodemon app.js'
+
+[nodemon] 2.0.20
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching path(s): *.* swagger.json
+[nodemon] watching extensions: js,handlebars,scss,svg,png
+[nodemon] starting `node app.js`
+00:00:00.840Z  INFO node-api: Authentication initialized
+00:00:00.931Z  INFO node-api: DATABASE: Connecting database... (package=@kth/mongo)
+00:00:01.052Z  INFO node-api: Checking environment variables from .env.ini file.
+00:00:01.053Z DEBUG node-api:    Environment variable 'API_KEYS_0' is missing, most likely there is a default value.
+00:00:01.053Z DEBUG node-api:    Environment variable 'MONGODB_URI' is missing, most likely there is a default value.
+00:00:01.053Z  INFO node-api: Checking environment variables completed.
+(node:69329) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+00:00:01.054Z  INFO node-api: *** *************************
+00:00:01.054Z  INFO node-api: *** SERVER STARTED
+00:00:01.054Z  INFO node-api: *** using unsecure HTTP server
+00:00:01.054Z  INFO node-api: *** Listening on port: 3001
+00:00:01.055Z  INFO node-api: *** *************************
+00:00:01.062Z  INFO node-api: DATABASE: Default connection established (package=@kth/mongo)
+00:00:01.062Z  INFO node-api: AGENDA: Trigger Agenda initialization on mongoDb connection event
+00:00:01.062Z  INFO node-api: AGENDA: Agenda is not yet initialized, continuing.
+00:00:01.062Z  INFO node-api: AGENDA: Initializing a new Agenda instance.
+00:00:01.064Z DEBUG node-api: DATABASE connected: localhost@node (package=@kth/mongo)
+00:00:01.064Z DEBUG node-api: DATABASE driver version: 6.8.1 (package=@kth/mongo)
+00:00:01.064Z  INFO node-api: MongoDB: connected
+00:00:01.108Z  INFO node-api: AGENDA: Canceled 0 jobs
+00:00:01.111Z  INFO node-api: AGENDA: Purged 0 jobs
+00:00:01.111Z  INFO node-api: AGENDA: ready, configuring jobs...
+00:00:01.128Z  INFO node-api: AGENDA: Agenda instance configured and running
+00:00:01.130Z  INFO node-api: AGENDA: import: scheduled at Tue Jan 03 2023 06:20:00 GMT+0100 (Central European Standard Time)
+
 ```
-
-This is because the SSL information is incorrect in "/config/serverSettings.js". Set `useSsl: false` to avoid this.
-
-## Testing
-
-You find some useful hints for developers in the file "[TESTING.md](TESTING.md)".
-
-> **Please note:**
-> You might decide to remove all unit-tests from your application. Keep in mind that you still need to provide a working npm script for `npm test` for the build server. If you don't want or need tests, a simple `echo "ok"` will suffice.
-
-## Linting
-
-_From Wikipedia: lint, or a linter, is a static code analysis tool used to flag programming errors, bugs, stylistic errors, and suspicious constructs._
-
-We use ESLint for our linting and our default config comes from the module [@kth/eslint-config-kth](https://github.com/KTH/eslint-config-kth)
-
-See .eslintrc file
-
-[api]: https://github.com/KTH/node-api
-[web]: https://github.com/KTH/node-web
-[swagger]: http://swagger.io/
-
