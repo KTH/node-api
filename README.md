@@ -1,16 +1,18 @@
 # Node-api
 
-_This is specifically written for the `coding-interview` branch. See `master` branch for a general introduction of the repository._
+_This is specifically written for the `coding-interview` branch. See the `master` branch for a general introduction of the repository._
 
 ## Instructions
 
 Make sure that the [Prerequisites](#prerequisites) are met, follow the steps in [Setup](#setup), and try out the application in [Getting started](#getting-started). Finally, try to solve the assignments in [Assignments](#assignments).
 
+- Spend 1–2 hours on the assigments. You don’t need to finish all of them.
 - Please use at least one commit per assigment.
 - Add comments where needed.
 - Update tests if necessary, and feel free to add addtional tests.
+- Share the repository with the KTH representative.
 
-If you run into problems, see [Troubleshooting](#troubleshooting).
+If you run into problems, see [Troubleshooting](#troubleshooting). Contact the KTH representative if you have any questions.
 
 ## Prerequisites
 
@@ -35,6 +37,8 @@ If you run into problems, see [Troubleshooting](#troubleshooting).
 - Then, try to retrieve the same data with the _GET /v1/data/{id}_ endpoint.
 
 ## Assignments
+
+The assigments aim to add endpoints for full CRUD functionality, and then to further enhance the API.
 
 1. Change the data endpoints to handle values with `firstName` and `lastName`, instead of just `name`. Example: `{ "name": "John Doe" }` to `{ "firstName": "John", "lastName": "Doe"}`.
 2. Add `PUT` and `DELETE` data endpoints.
