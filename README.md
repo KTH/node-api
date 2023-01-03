@@ -43,7 +43,7 @@ The assigments aim to add endpoints for full CRUD functionality, and then to fur
 1. Change the data endpoints to handle values with `firstName` and `lastName`, instead of just `name`. Example: `{ "name": "John Doe" }` to `{ "firstName": "John", "lastName": "Doe"}`.
 2. Add `PUT` and `DELETE` data endpoints.
 3. Refactor data endpoints to person endpoints. Example: _GET /v1/data/{id}_ to _GET /v1/person/{id}_.
-4. Add room endpoints. Room data should have appropriate properties.
+4. Add endpoints for CRUD operations on rooms. Example: _GET /v1/room/{id}_. Rooms should have appropriate properties.
 
 ### Extra credit
 
