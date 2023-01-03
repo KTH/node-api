@@ -44,3 +44,6 @@ docker-local.*
 
 # Local notes
 notes*
+
+# Local MongoDB
+data
