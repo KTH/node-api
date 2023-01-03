@@ -13,6 +13,8 @@
     "test:integration": "cd test/integration && bash -c 'INTEGRATION_TEST_BASEURL=http://localhost:3001/api/node ./all-tests.sh'",
     "test:integration-in-docker": "docker build --progress plain -t node-api . && bash -c 'LOCAL_IMAGE_ID=node-api SUCCESS_DELAY=5000 docker-compose -f docker-compose-integration-tests.yml* up --abort-on-container-exit --build --remove-orphans'",
     "test:coverage": "jest --coverage",
+    "mongo:start": "docker-compose -f docker-compose-mongo.yml up -d",
+    "mongo:stop": "docker-compose -f docker-compose-mongo.yml down",
     "validate:swagger": "node ./test/swagger-validate.js",
     "validate:swagger-watch": "nodemon --watch swagger.json ./test/swagger-validate.js",
     "start": "bash -c '/wait; cat /KTH_NODEJS; NODE_ENV=production node app.js'",
