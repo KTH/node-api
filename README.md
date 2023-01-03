@@ -1,18 +1,16 @@
 # Node-api
 
-_This is specifically written for the `coding-interview` branch. See the `master` branch for a general introduction of the repository._
+_This is specifically written for the `coding-interview` branch. See `master` branch for a general introduction of the repository._
 
 ## Instructions
 
 Make sure that the [Prerequisites](#prerequisites) are met, follow the steps in [Setup](#setup), and try out the application in [Getting started](#getting-started). Finally, try to solve the assignments in [Assignments](#assignments).
 
-- Spend 1–2 hours on the assigments. You don’t need to finish all of them.
 - Please use at least one commit per assigment.
 - Add comments where needed.
 - Update tests if necessary, and feel free to add addtional tests.
-- Share the repository with the KTH representative.
 
-If you run into problems, see [Troubleshooting](#troubleshooting). Contact the KTH representative if you have any questions.
+If you run into problems, see [Troubleshooting](#troubleshooting).
 
 ## Prerequisites
 
@@ -23,28 +21,25 @@ If you run into problems, see [Troubleshooting](#troubleshooting). Contact the K
 
 ## Setup
 
-- Create a new repository with this repository ([KTH/node-api](https://github.com/KTH/node-api)) as a template.
+- Clone this repository ([KTH/node-api](https://github.com/KTH/node-api)) or create a new repository with this repository as a template.
 - Switch to branch `coding-interview`.
 - Install the dependencies with `npm i`.
 - Start a MongoDB server instance with `npm run mongo:start`. (You can stop it with `npm run mongo:stop`.)
-- rename the file [.env-coding-interview](.env-coding-interview) to `.env`
 - Start the application with `npm run start-dev`. (The terminal should display something similar to [Example of log output on start](#example-of-log-output-on-start).)
 - Verify that the Swagger UI is available on http://localhost:3001/api/node/swagger/.
 
 ## Getting started
 
-- Authorization is managed with an `apiKey`. The default value is set to `1234` in [.env](.env). Press the _Authorize 🔓_ button in the Swagger UI, enter _1234_, press _Authorize_, and close the modal. Now, you can try the _GET /\_checkAPIkey_ endpoint. It will return response code `200` if you are authorized.
+- Authorization is managed with an `apiKey`. The default value is set to `1234` in `./config/serverSettings.js:19`. Press the _Authorize 🔓_ button in the Swagger UI, enter _1234_, press _Authorize_, and close the modal. Now, you can try the _GET /\_checkAPIkey_ endpoint. It will return response code `200` if you are authorized.
 - Try to save data to the database with the _POST /v1/data/{id}_ endpoint.
 - Then, try to retrieve the same data with the _GET /v1/data/{id}_ endpoint.
 
 ## Assignments
 
-The assigments aim to add endpoints for full CRUD functionality, and then to further enhance the API.
-
 1. Change the data endpoints to handle values with `firstName` and `lastName`, instead of just `name`. Example: `{ "name": "John Doe" }` to `{ "firstName": "John", "lastName": "Doe"}`.
 2. Add `PUT` and `DELETE` data endpoints.
 3. Refactor data endpoints to person endpoints. Example: _GET /v1/data/{id}_ to _GET /v1/person/{id}_.
-4. Add endpoints for CRUD operations on rooms. Example: _GET /v1/room/{id}_. Rooms should have appropriate properties.
+4. Add room endpoints. Room data should have appropriate properties.
 
 ### Extra credit
 
