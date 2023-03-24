@@ -118,6 +118,14 @@ async function getMonitor(req, res) {
         message: '- local system checks: OK',
         statusCode: 200,
       },
+      {
+        key: 'azure',
+        isResolved: true,
+        message: req.hostname?.includes('azurewebsites')
+          ? '- I am running in an App service!'
+          : '- Where am I running?',
+        statusCode: 200,
+      },
     ])
   } catch (error) {
     log.error(`Monitor failed`, error)
