@@ -2,6 +2,11 @@
 
 require('dotenv').config()
 
+if (process.env.APPLICATIONINSIGHTS_CONNECTION_STRING || process.env.APPINSIGHTS_INSTRUMENTATIONKEY) {
+  const appInsights = require('applicationinsights')
+  appInsights.setup().setAutoCollectConsole(true, true).start()
+}
+
 const fs = require('fs')
 const log = require('@kth/log')
 const config = require('./server/configuration').server

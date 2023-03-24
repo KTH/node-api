@@ -99,6 +99,7 @@ async function getAbout(req, res) {
  * Monitor page
  */
 async function getMonitor(req, res) {
+  console.log('Hostname:', req.hostname)
   try {
     await monitorSystems(req, res, [
       {
@@ -111,7 +112,6 @@ async function getMonitor(req, res) {
         required: false,
         agendaState: await Agenda.isStatusOkay(),
       },
-
       {
         key: 'local',
         isResolved: true,
