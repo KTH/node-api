@@ -99,7 +99,7 @@ async function getAbout(req, res) {
  * Monitor page
  */
 async function getMonitor(req, res) {
-  console.log('Hostname:', req.hostname)
+  console.log('⚙️ Monitor in Node Api:', { hostname: req.hostname })
   try {
     await monitorSystems(req, res, [
       {
