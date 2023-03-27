@@ -66,6 +66,9 @@ function getSwaggerUI(req, res) {
  * About page
  */
 async function getAbout(req, res) {
+  console.log('About request')
+  console.log('ENV', process.env)
+
   const paths = getPaths()
   const aboutData = {
     appName: packageFile.name,
