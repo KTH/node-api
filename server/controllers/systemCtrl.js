@@ -104,6 +104,10 @@ async function getAbout(req, res) {
 async function getMonitor(req, res) {
   console.log('⚙️ Monitor in Node Api:', { hostname: req.hostname })
   try {
+    const acceptHeader = req.headers?.accept || 'none'
+    console.log('Monitor_accept_type:', acceptHeader)
+    console.log('Monitor_headers:', req.headers)
+
     await monitorSystems(req, res, [
       {
         key: 'mongodb',
