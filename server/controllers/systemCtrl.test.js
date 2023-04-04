@@ -37,10 +37,8 @@ jest.mock('../../server/configuration', () => ({
   },
 }))
 
-jest.mock('@kth/mongo', () => ({
-  connect: jest.fn(),
-  isOk: jest.fn(() => true),
-}))
+jest.mock('@kth/monitor', () => jest.fn())
+const mockKthMonitor = require('@kth/monitor')
 
 /*
  * utility functions
@@ -67,15 +65,19 @@ describe(`System controller`, () => {
   beforeEach(() => {})
   afterEach(() => {})
 
-  test('monitor returns successfully', async () => {
+  test('monitor package is called', async () => {
     const req = buildReq({})
     const res = buildRes()
 
     const { monitor } = require('./systemCtrl')
 
     await monitor(req, res)
-    expect(res.status).toHaveBeenNthCalledWith(1, 200)
-    expect(res.json).toHaveBeenCalledTimes(1)
+
+    expect(mockKthMonitor).toHaveBeenCalledWith(
+      req,
+      res,
+      expect.arrayContaining([expect.objectContaining({ key: 'local' })])
+    )
   })
 
   test('about returns successfully', async () => {
