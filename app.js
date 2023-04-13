@@ -6,7 +6,7 @@ const packageFile = require('./package.json')
 
 if (process.env.APPLICATIONINSIGHTS_CONNECTION_STRING || process.env.APPINSIGHTS_INSTRUMENTATIONKEY) {
   const appInsights = require('applicationinsights')
-  appInsights.setup().setAutoCollectConsole(true, true).start()
+  appInsights.setup().start()
   appInsights.defaultClient.context.tags['ai.cloud.role'] = packageFile?.name
 }
 
