@@ -23,7 +23,7 @@
   "dependencies": {
     "@kth/log": "^4.0.6",
     "@kth/mongo": "^4.0.14",
-    "@kth/monitor": "^4.0.0-alpha.13",
+    "@kth/monitor": "^4.0.0-alpha.14",
     "@kth/server": "^4.0.4",
     "agenda": "^4.4.0",
     "applicationinsights": "^2.5.0",
