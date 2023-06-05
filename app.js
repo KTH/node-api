@@ -2,18 +2,15 @@
 
 require('dotenv').config()
 
-const packageFile = require('./package.json')
-
-if (process.env.APPLICATIONINSIGHTS_CONNECTION_STRING || process.env.APPINSIGHTS_INSTRUMENTATIONKEY) {
-  const appInsights = require('applicationinsights')
-  appInsights.setup().start()
-  appInsights.defaultClient.context.tags['ai.cloud.role'] = packageFile?.name
-}
+const { KthAppinsights } = require('@kth/appinsights')
+KthAppinsights.init({ name: 'node-api' })
 
 const fs = require('fs')
 const log = require('@kth/log')
 const config = require('./server/configuration').server
 const server = require('./server/server')
+
+const packageFile = require('./package.json')
 
 // catches uncaught exceptions
 process.on('uncaughtException', (err, origin) => {
