@@ -5,7 +5,7 @@ const fs = require('fs')
 const log = require('@kth/log')
 const db = require('@kth/mongo')
 const { getPaths } = require('kth-node-express-routing')
-const monitorSystems = require('@kth/monitor')
+const { monitorRequest } = require('@kth/monitor')
 
 const configServer = require('../configuration').server
 const version = require('../../config/version')
@@ -103,10 +103,9 @@ async function getAbout(req, res) {
  */
 async function getMonitor(req, res) {
   log.info('⚙️ Monitor in Node Api:', { hostname: req.hostname })
-  log.info('Headers  ----> ', req.headers)
 
   try {
-    await monitorSystems(req, res, [
+    await monitorRequest(req, res, [
       {
         key: 'mongodb',
         required: true,
@@ -116,20 +115,6 @@ async function getMonitor(req, res) {
         key: 'agenda',
         required: false,
         agendaState: await Agenda.isStatusOkay(),
-      },
-      {
-        key: 'local',
-        isResolved: true,
-        message: '- local system checks: OK',
-        statusCode: 200,
-      },
-      {
-        key: 'azure',
-        isResolved: true,
-        message: req.hostname?.includes('azurewebsites')
-          ? '- I am running in an App service!'
-          : '- Where am I running?',
-        statusCode: 200,
       },
     ])
   } catch (error) {

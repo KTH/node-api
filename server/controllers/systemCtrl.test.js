@@ -37,7 +37,7 @@ jest.mock('../../server/configuration', () => ({
   },
 }))
 
-jest.mock('@kth/monitor', () => jest.fn())
+jest.mock('@kth/monitor', () => ({ monitorRequest: jest.fn() }))
 const mockKthMonitor = require('@kth/monitor')
 
 /*
@@ -73,10 +73,10 @@ describe(`System controller`, () => {
 
     await monitor(req, res)
 
-    expect(mockKthMonitor).toHaveBeenCalledWith(
+    expect(mockKthMonitor.monitorRequest).toHaveBeenCalledWith(
       req,
       res,
-      expect.arrayContaining([expect.objectContaining({ key: 'local' })])
+      expect.arrayContaining([expect.objectContaining({ key: 'mongodb' })])
     )
   })
 
