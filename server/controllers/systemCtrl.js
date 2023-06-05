@@ -66,9 +66,6 @@ function getSwaggerUI(req, res) {
  * About page
  */
 async function getAbout(req, res) {
-  console.log('About request')
-  console.log('ENV', process.env)
-
   const paths = getPaths()
   const aboutData = {
     appName: packageFile.name,
@@ -102,8 +99,6 @@ async function getAbout(req, res) {
  * Monitor page
  */
 async function getMonitor(req, res) {
-  log.info('⚙️ Monitor in Node Api:', { hostname: req.hostname })
-
   try {
     await monitorRequest(req, res, [
       {
