@@ -37,7 +37,7 @@
     "kth-node-api-key-strategy": "^2.0.0",
     "kth-node-configuration": "^2.0.13",
     "kth-node-express-routing": "^2.0.16",
-    "mongoose": "^6.11.5",
+    "mongoose": "^7.5.0",
     "passport": "^0.6.0",
     "swagger-ui-dist": "^5.6.2"
   },
