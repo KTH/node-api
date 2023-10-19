@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "@kth/eslint-config-kth": "^3.1.0",
-    "@types/jest": "^29.5.5",
+    "@types/jest": "^29.5.6",
     "ansi-regex": "^6.0.1",
     "eslint": "^8.51.0",
     "husky": "^8.0.3",
