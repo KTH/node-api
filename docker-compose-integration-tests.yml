@@ -19,7 +19,7 @@ services:
       API_KEYS_0: '?name=devClient&apiKey=1234&scope=write&scope=read'
       MONGODB_URI: 'mongodb://db'
     healthcheck:
-      test: ['CMD', 'curl', 'http://app:3001/api/publications/_monitor']
+      test: ['CMD', 'curl', 'http://app:3001/api/node/_monitor']
       interval: 5s
       timeout: 10s
       retries: 5
