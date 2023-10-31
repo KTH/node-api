@@ -5,28 +5,36 @@ services:
     image: mongo:latest
     ports:
       - 27017
+    healthcheck:
+      test: ['CMD', 'mongosh', '--eval', '''db.runCommand("ping").ok''', 'localhost:27017/test']
+      interval: 5s
+      timeout: 10s
+      retries: 5
 
-  api:
+  app:
     image: $LOCAL_IMAGE_ID
     environment:
       SERVICE_PUBLISH: '/api/node'
       SERVER_PORT: 3001
       API_KEYS_0: '?name=devClient&apiKey=1234&scope=write&scope=read'
       MONGODB_URI: 'mongodb://db'
-      WAIT_HOSTS: 'db:27017'
-      WAIT_HOSTS_TIMEOUT: 30
+    healthcheck:
+      test: ['CMD', 'curl', 'http://app:3001/api/publications/_monitor']
+      interval: 5s
+      timeout: 10s
+      retries: 5
     ports:
       - 3001
     depends_on:
-      - db
+      db:
+        condition: service_healthy
 
   integration-tests:
     build: ./test/integration
     environment:
-      INTEGRATION_TEST_BASEURL: 'http://api:3001/api/node'
+      INTEGRATION_TEST_BASEURL: 'http://app:3001/api/node'
       INTEGRATION_TEST_SUCCESS_DELAY: '${SUCCESS_DELAY:-0}'
       INTEGRATION_TEST_FAILURE_DELAY: '${FAILURE_DELAY:-0}'
-      WAIT_HOSTS: 'api:3001'
-      WAIT_HOSTS_TIMEOUT: 40
     depends_on:
-      - api
+      app:
+        condition: service_healthy

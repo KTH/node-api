@@ -6,15 +6,6 @@ FROM kthregistry.azurecr.io/kth-nodejs-18:latest
 LABEL maintainer="KTH Webb <web-developers@kth.se>"
 
 #
-# During integration-tests running with docker-compose in the pipeline
-# this application might have to wait for other services to be ready
-# before it is started itself. This can be done with the following
-# script and its environment variables WAIT_HOSTS and WAIT_HOSTS_TIMEOUT.
-#
-ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.7.3/wait /wait
-RUN chmod +x /wait
-
-#
 # Put the application into a directory in the root.
 # This will prevent file polution and possible overwriting of files.
 #
@@ -61,4 +52,4 @@ EXPOSE 3001
 #
 # The command that is executed when an instance of this image is run.
 #
-CMD ["bash", "-c", "/wait; cat /KTH_NODEJS; NODE_ENV=production node app.js"]
+CMD ["bash", "-c", "cat /KTH_NODEJS; NODE_ENV=production node app.js"]
