@@ -12,29 +12,7 @@ const version = require('../../config/version')
 const packageFile = require('../../package.json')
 const Agenda = require('../jobs/worker')
 
-/**
- * Adds a zero (0) to numbers less then ten (10)
- */
-function zeroPad(value) {
-  return value < 10 ? '0' + value : value
-}
-
-/**
- * Takes a Date object and returns a simple date string.
- */
-function _simpleDate(date) {
-  const year = date.getFullYear()
-  const month = zeroPad(date.getMonth() + 1)
-  const day = zeroPad(date.getDate())
-  const hours = zeroPad(date.getHours())
-  const minutes = zeroPad(date.getMinutes())
-  const seconds = zeroPad(date.getSeconds())
-  const hoursBeforeGMT = date.getTimezoneOffset() / -60
-  const timezone = [' GMT', ' CET', ' CEST'][hoursBeforeGMT] || ''
-  return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}${timezone}`
-}
-
-const started = _simpleDate(new Date())
+const started = new Date()
 
 /**
  * GET /swagger.json
@@ -67,31 +45,17 @@ function getSwaggerUI(req, res) {
  */
 async function getAbout(req, res) {
   const paths = getPaths()
+
   const aboutData = {
     appName: packageFile.name,
     appVersion: packageFile.version,
     appDescription: packageFile.description,
     monitorUri: paths.system.monitor.uri,
-    robotsUri: '',
-    gitBranch: JSON.stringify(version.gitBranch),
-    gitCommit: JSON.stringify(version.gitCommit),
-    jenkinsBuild: JSON.stringify(version.jenkinsBuild),
-    jenkinsBuildDate: version.jenkinsBuild
-      ? _simpleDate(new Date(parseInt(version.jenkinsBuild, 10) * 1000))
-      : JSON.stringify(version.jenkinsBuildDate),
-    dockerName: JSON.stringify(version.dockerName),
-    dockerVersion: JSON.stringify(version.dockerVersion),
+    dockerVersion: version.dockerVersion,
     hostname: os.hostname(),
     started,
-    env: process.env.NODE_ENV,
   }
-  if (req.headers.accept === 'application/json') {
-    return res.json(aboutData)
-  }
-  res.render('system/about', {
-    layout: '',
-    ...aboutData,
-  })
+  return res.json(aboutData)
 }
 
 /**
