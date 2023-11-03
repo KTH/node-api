@@ -72,7 +72,7 @@ async function getAbout(req, res) {
     appVersion: packageFile.version,
     appDescription: packageFile.description,
     monitorUri: paths.system.monitor.uri,
-    robotsUri: paths.system.robots.uri,
+    robotsUri: '',
     gitBranch: JSON.stringify(version.gitBranch),
     gitCommit: JSON.stringify(version.gitCommit),
     jenkinsBuild: JSON.stringify(version.jenkinsBuild),
@@ -119,16 +119,6 @@ async function getMonitor(req, res) {
 }
 
 /**
- * GET /robots.txt
- * Robots.txt page
- */
-function getRobotsTxt(req, res) {
-  res.type('text').render('system/robots', {
-    layout: '',
-  })
-}
-
-/**
  * GET /_paths
  * Return all paths for the system
  */
@@ -164,7 +154,6 @@ async function getStatus(req, res) {
 module.exports = {
   monitor: getMonitor,
   about: getAbout,
-  robotsTxt: getRobotsTxt,
   paths: getPathsHandler,
   checkAPIKey: getCheckAPIKey,
   swagger: getSwagger,

@@ -6,9 +6,6 @@ const mocks = {
       monitor: {
         uri: '/_monitor',
       },
-      robots: {
-        uri: '/robots.txt',
-      },
     },
   })),
 }

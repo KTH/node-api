@@ -99,7 +99,6 @@ systemRoute.get('system.paths', _addProxy('/_paths'), System.paths)
 systemRoute.get('system.status', _addProxy('/_status'), System.status)
 systemRoute.get('system.swagger', _addProxy('/swagger.json'), System.swagger)
 systemRoute.get('system.swaggerUI', config.proxyPrefixPath.uri + '/swagger/swagger-initializer.js', System.swaggerUI)
-systemRoute.get('system.robots', '/robots.txt', System.robotsTxt)
 server.use('/', systemRoute.getRouter())
 
 // Swagger UI

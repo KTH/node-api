@@ -55,14 +55,7 @@ const INTERNAL_TIMEOUT_CODE = 'timeout'
 
 const WAIT_FOR_SERVER_TIMEOUT = 15000
 
-const ENDPOINT_KEYS_TO_IGNORE = [
-  'system.monitor',
-  'system.about',
-  'system.paths',
-  'system.robots',
-  'system.swagger',
-  'system.status',
-]
+const ENDPOINT_KEYS_TO_IGNORE = ['system.monitor', 'system.about', 'system.paths', 'system.swagger', 'system.status']
 
 /**
  * @param {*} input

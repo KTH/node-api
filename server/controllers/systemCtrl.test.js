@@ -5,9 +5,6 @@ const applicationPaths = {
     monitor: {
       uri: '/_monitor',
     },
-    robots: {
-      uri: '/robots.txt',
-    },
   },
 }
 
@@ -107,18 +104,6 @@ describe(`System controller`, () => {
 
     await status(req, res)
     expect(res.json).toHaveBeenCalledTimes(1)
-  })
-
-  test('robotsTxt returns successfully', async () => {
-    const req = buildReq({})
-    const res = buildRes()
-
-    const { robotsTxt } = require('./systemCtrl')
-
-    await robotsTxt(req, res)
-
-    expect(res.render).toHaveBeenCalledTimes(1)
-    expect(res.type).toHaveBeenNthCalledWith(1, 'text')
   })
 
   test('paths returns successfully', async () => {
