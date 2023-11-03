@@ -33,16 +33,6 @@ server.locals.secret = new Map()
 module.exports = server
 module.exports.getPaths = () => getPaths()
 
-/* **************************
- * ******* TEMPLATING *******
- * **************************
- */
-const exphbs = require('express-handlebars')
-
-server.set('views', path.join(__dirname, '/views'))
-server.engine('handlebars', exphbs.engine())
-server.set('view engine', 'handlebars')
-
 /* ******************************
  * ******* ACCESS LOGGING *******
  * ******************************
