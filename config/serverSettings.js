@@ -25,14 +25,7 @@ module.exports = {
   proxyPrefixPath: {
     uri: getEnv('SERVICE_PUBLISH', devPrefixPath),
   },
-  useSsl: String(getEnv('SERVER_SSL', devSsl)).toLowerCase() === 'true',
   port: getEnv('SERVER_PORT', devPort),
-
-  ssl: {
-    // In development we don't have SSL feature enabled
-    pfx: getEnv('SERVER_CERT_FILE', ''),
-    passphrase: getEnv('SERVER_CERT_PASSPHRASE', ''),
-  },
 
   // API keys
   api_keys: unpackApiKeysConfig('API_KEYS', devApiKeys),

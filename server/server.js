@@ -1,4 +1,6 @@
 /* eslint-disable import/order */
+// But also try to get the order better
+const express = require('express')
 
 // Load .env file in development mode
 const nodeEnv = process.env.NODE_ENV && process.env.NODE_ENV.toLowerCase()
@@ -22,7 +24,8 @@ const logConfiguration = {
 }
 log.init(logConfiguration)
 
-const server = require('@kth/server')
+const server = express()
+
 const path = require('path')
 
 const AppRouter = require('kth-node-express-routing').PageRouter
@@ -92,7 +95,6 @@ systemRoute.get('system.swaggerUI', config.proxyPrefixPath.uri + '/swagger/swagg
 server.use('/', systemRoute.getRouter())
 
 // Swagger UI
-const express = require('express')
 const pathToSwaggerUi = require('swagger-ui-dist').absolutePath()
 
 const swaggerUrl = _addProxy('/swagger')
