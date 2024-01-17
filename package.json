@@ -49,7 +49,7 @@
     "jest-sonar-reporter": "^2.0.0",
     "lint-staged": "^15.2.0",
     "nodemon": "^3.0.3",
-    "prettier": "^3.2.2",
+    "prettier": "^3.2.3",
     "swagger-parser": "^10.0.3"
   },
   "// (prettier)": "configuration version 2020-06-15 - might also reside in .prettierrc.json",
