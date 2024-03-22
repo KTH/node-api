@@ -23,16 +23,17 @@ If you run into problems, see [Troubleshooting](#troubleshooting). Contact the K
 
 ## Setup
 
-- Clone this repository ([KTH/node-api](https://github.com/KTH/node-api)) or create a new repository with this repository as a template.
+- Create a new repository with this repository ([KTH/node-api](https://github.com/KTH/node-api)) as a template.
 - Switch to branch `coding-interview`.
 - Install the dependencies with `npm i`.
 - Start a MongoDB server instance with `npm run mongo:start`. (You can stop it with `npm run mongo:stop`.)
+- rename the file [.env-coding-interview](.env-coding-interview) to `.env`
 - Start the application with `npm run start-dev`. (The terminal should display something similar to [Example of log output on start](#example-of-log-output-on-start).)
 - Verify that the Swagger UI is available on http://localhost:3001/api/node/swagger/.
 
 ## Getting started
 
-- Authorization is managed with an `apiKey`. The default value is set to `1234` in `./config/serverSettings.js:19`. Press the _Authorize 🔓_ button in the Swagger UI, enter _1234_, press _Authorize_, and close the modal. Now, you can try the _GET /\_checkAPIkey_ endpoint. It will return response code `200` if you are authorized.
+- Authorization is managed with an `apiKey`. The default value is set to `1234` in [.env](.env). Press the _Authorize 🔓_ button in the Swagger UI, enter _1234_, press _Authorize_, and close the modal. Now, you can try the _GET /\_checkAPIkey_ endpoint. It will return response code `200` if you are authorized.
 - Try to save data to the database with the _POST /v1/data/{id}_ endpoint.
 - Then, try to retrieve the same data with the _GET /v1/data/{id}_ endpoint.
 
