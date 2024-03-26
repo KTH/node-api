@@ -2,9 +2,6 @@
 
 require('dotenv').config()
 
-const { KthAppinsights } = require('@kth/appinsights')
-KthAppinsights.init({ name: 'node-api' })
-
 const fs = require('fs')
 const log = require('@kth/log')
 const config = require('./server/configuration').server
