@@ -18,7 +18,7 @@ async function getData(req, res, next) {
     if (!doc) {
       return res.status(404).json({ message: 'document not found' })
     }
-    log.debug({ req, res }, 'Leive getData')
+    log.debug({ req, res }, 'Leave getData')
     return res.json({ id: doc._id, name: doc.name })
   } catch (err) {
     return next(err)
