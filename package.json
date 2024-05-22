@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@hokify/agenda": "^6.3.0",
-    "@kth/appinsights": "^0.3.1",
+    "@kth/appinsights": "^0.4.0",
     "@kth/log": "^4.0.7",
     "@kth/mongo": "^4.0.15",
     "@kth/monitor": "^4.3.1",
@@ -35,9 +35,9 @@
     "kth-node-api-key-strategy": "^2.0.3",
     "kth-node-configuration": "^2.1.0",
     "kth-node-express-routing": "^2.2.0",
-    "mongoose": "^7.6.11",
+    "mongoose": "^7.6.12",
     "passport": "^0.7.0",
-    "swagger-ui-dist": "^5.17.10"
+    "swagger-ui-dist": "^5.17.12"
   },
   "devDependencies": {
     "@kth/eslint-config-kth": "^3.4.0",
@@ -47,7 +47,7 @@
     "jest": "^29.7.0",
     "jest-extended": "^4.0.2",
     "jest-sonar-reporter": "^2.0.0",
-    "lint-staged": "^15.2.2",
+    "lint-staged": "^15.2.4",
     "nodemon": "^3.1.0",
     "prettier": "^3.2.5",
     "swagger-parser": "^10.0.3"
