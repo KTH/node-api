@@ -13,7 +13,7 @@ const { getEnv, unpackMongodbConfig, unpackApiKeysConfig, devDefaults } = requir
 const devPrefixPath = devDefaults('/api/node')
 const devSsl = devDefaults(false)
 const devPort = devDefaults(3001)
-const devMongodb = devDefaults('mongodb://localhost:27017/node')
+const devMongodb = devDefaults('mongodb://127.0.0.1:27017/node')
 
 // EXAMPLE: const devApiKeys = devDefaults('?name=devClient&apiKey=SET_YOUR_API_KEY&scope=write&scope=read')
 const devApiKeys = devDefaults('?name=devClient&apiKey=1234&scope=write&scope=read')
