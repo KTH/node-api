@@ -40,7 +40,7 @@
     "swagger-ui-dist": "^5.17.14"
   },
   "devDependencies": {
-    "@kth/eslint-config-kth": "^3.4.0",
+    "@kth/eslint-config-kth": "^3.5.0",
     "@types/jest": "^29.5.12",
     "eslint": "^8.57.0",
     "husky": "^9.0.11",
