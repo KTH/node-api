@@ -78,15 +78,6 @@ describe(`System controller`, () => {
   })
 
   test('about returns successfully', async () => {
-    const req = buildReq({ headers: {} })
-    const res = buildRes()
-
-    const { about } = require('./systemCtrl')
-
-    await about(req, res)
-    expect(res.json).toHaveBeenCalledTimes(1)
-  })
-  test('about JSON returns successfully', async () => {
     const req = buildReq({})
     const res = buildRes()
 

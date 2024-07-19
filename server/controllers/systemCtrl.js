@@ -46,16 +46,16 @@ function getSwaggerUI(req, res) {
 async function getAbout(req, res) {
   const paths = getPaths()
 
-  const aboutData = {
+  return res.json({
     appName: packageFile.name,
     appVersion: packageFile.version,
     appDescription: packageFile.description,
     monitorUri: paths.system.monitor.uri,
     dockerVersion: version.dockerVersion,
+    nodeVersion: version.nodeVersion,
     hostname: os.hostname(),
     started,
-  }
-  return res.json(aboutData)
+  })
 }
 
 /**
