@@ -16,5 +16,5 @@ updates:
     reviewers:
       - 'KTH/web-team'
     ignore:
-      - dependency-name: 'kth-style'
-        versions: ['9.x', '10.x']
+      - dependency-name: 'eslint'
+        versions: ['9.x']
