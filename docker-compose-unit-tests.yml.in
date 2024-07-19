@@ -1,5 +1,3 @@
-version: '3.6'
-
 #
 # Test by:
 #   npm run test:unit-in-docker
