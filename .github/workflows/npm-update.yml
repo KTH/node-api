@@ -35,6 +35,8 @@ jobs:
 
       - run: git add package.json package-lock.json
 
+      - run: git diff
+
       - name: Commit changes
         run: |
           # Only commit if there are changes
