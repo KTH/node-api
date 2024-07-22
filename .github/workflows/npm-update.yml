@@ -8,6 +8,7 @@ on:
         type: boolean
   schedule:
     - cron: '0 2 * * *'
+    - cron: '0 7 * * *'
 
 jobs:
   Npm-Update:
