@@ -18,3 +18,5 @@ updates:
     ignore:
       - dependency-name: 'eslint'
         versions: ['9.x']
+      - dependency-name: 'mongoose'
+        versions: ['8.x']
