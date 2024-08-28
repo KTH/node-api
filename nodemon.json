@@ -1,6 +1,6 @@
 {
   "ignore": ["*/__tests__/*", "*/__mocks__/*", "*/__snapshots__/*", "*.test.js", "./*.svg"],
   "watch": [".", "swagger.json"],
-  "ext": "js,handlebars,scss,svg,png",
+  "ext": "js,scss,svg,png",
   "delay": 1000
 }
