@@ -47,7 +47,7 @@
     "jest-extended": "^4.0.2",
     "jest-sonar-reporter": "^2.0.0",
     "lint-staged": "^15.2.10",
-    "nodemon": "^3.1.6",
+    "nodemon": "^3.1.7",
     "prettier": "^3.3.3",
     "swagger-parser": "^10.0.3"
   },
