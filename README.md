@@ -1,15 +1,15 @@
 # Node-api
 
-_This is specifically written for the `coding-interview` branch. See the `master` branch for a general introduction of the repository._
+_This is specifically written for the `coding-interview` branch. See the `main` branch for a general introduction of the repository._
 
 ## Instructions
 
 Make sure that the [Prerequisites](#prerequisites) are met, follow the steps in [Setup](#setup), and try out the application in [Getting started](#getting-started). Finally, try to solve the assignments in [Assignments](#assignments).
 
-- Spend 1–2 hours on the assigments. You don’t need to finish all of them.
-- Please use at least one commit per assigment.
+- Spend 1 hour on the assignments.
+- Please use at least one commit per assignment.
 - Add comments where needed.
-- Update tests if necessary, and feel free to add addtional tests.
+- Update tests if necessary, and feel free to add additional tests.
 - Share the repository with the KTH representative.
 
 If you run into problems, see [Troubleshooting](#troubleshooting). Contact the KTH representative if you have any questions.
@@ -38,16 +38,11 @@ If you run into problems, see [Troubleshooting](#troubleshooting). Contact the K
 
 ## Assignments
 
-The assigments aim to add endpoints for full CRUD functionality, and then to further enhance the API.
+The assignments aim to add endpoints for full CRUD functionality.
 
 1. Change the data endpoints to handle values with `firstName` and `lastName`, instead of just `name`. Example: `{ "name": "John Doe" }` to `{ "firstName": "John", "lastName": "Doe"}`.
 2. Add `PUT` and `DELETE` data endpoints.
 3. Refactor data endpoints to person endpoints. Example: _GET /v1/data/{id}_ to _GET /v1/person/{id}_.
-4. Add endpoints for CRUD operations on rooms. Example: _GET /v1/room/{id}_. Rooms should have appropriate properties.
-
-### Extra credit
-
-- Make a rudimentary React app that uses the `node-api` as backend.
 
 ## References
 
@@ -63,35 +58,29 @@ $ npm run start-dev
 > node-api@2.0.0 start-dev
 > bash -c 'NODE_ENV=development nodemon app.js'
 
-[nodemon] 2.0.20
+[nodemon] 3.1.7
 [nodemon] to restart at any time, enter `rs`
 [nodemon] watching path(s): *.* swagger.json
-[nodemon] watching extensions: js,handlebars,scss,svg,png
+[nodemon] watching extensions: js,scss,svg,png
 [nodemon] starting `node app.js`
-00:00:00.840Z  INFO node-api: Authentication initialized
-00:00:00.931Z  INFO node-api: DATABASE: Connecting database... (package=@kth/mongo)
-00:00:01.052Z  INFO node-api: Checking environment variables from .env.ini file.
-00:00:01.053Z DEBUG node-api:    Environment variable 'API_KEYS_0' is missing, most likely there is a default value.
-00:00:01.053Z DEBUG node-api:    Environment variable 'MONGODB_URI' is missing, most likely there is a default value.
-00:00:01.053Z  INFO node-api: Checking environment variables completed.
-(node:69329) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
-(Use `node --trace-deprecation ...` to show where the warning was created)
-00:00:01.054Z  INFO node-api: *** *************************
-00:00:01.054Z  INFO node-api: *** SERVER STARTED
-00:00:01.054Z  INFO node-api: *** using unsecure HTTP server
-00:00:01.054Z  INFO node-api: *** Listening on port: 3001
-00:00:01.055Z  INFO node-api: *** *************************
-00:00:01.062Z  INFO node-api: DATABASE: Default connection established (package=@kth/mongo)
-00:00:01.062Z  INFO node-api: AGENDA: Trigger Agenda initialization on mongoDb connection event
-00:00:01.062Z  INFO node-api: AGENDA: Agenda is not yet initialized, continuing.
-00:00:01.062Z  INFO node-api: AGENDA: Initializing a new Agenda instance.
-00:00:01.064Z DEBUG node-api: DATABASE connected: localhost@node (package=@kth/mongo)
-00:00:01.064Z DEBUG node-api: DATABASE driver version: 6.8.1 (package=@kth/mongo)
-00:00:01.064Z  INFO node-api: MongoDB: connected
-00:00:01.108Z  INFO node-api: AGENDA: Canceled 0 jobs
-00:00:01.111Z  INFO node-api: AGENDA: Purged 0 jobs
-00:00:01.111Z  INFO node-api: AGENDA: ready, configuring jobs...
-00:00:01.128Z  INFO node-api: AGENDA: Agenda instance configured and running
-00:00:01.130Z  INFO node-api: AGENDA: import: scheduled at Tue Jan 03 2023 06:20:00 GMT+0100 (Central European Standard Time)
-
+09:27:34.191Z  INFO node-api: Authentication initialized
+09:27:34.334Z  INFO node-api: DATABASE: Connecting database... (package=@kth/mongo)
+09:27:34.376Z  INFO node-api: kth-node-log already initialized, won't do it again
+09:27:34.532Z  INFO node-api: Checking environment variables from .env.ini file.
+09:27:34.532Z DEBUG node-api:    Environment variable 'API_KEYS_0' is missing, most likely there is a default value.
+09:27:34.532Z DEBUG node-api:    Environment variable 'MONGODB_URI' is missing, most likely there is a default value.
+09:27:34.532Z  INFO node-api: Checking environment variables completed.
+09:27:34.534Z  INFO node-api: Http server listening on port 3001
+09:27:34.539Z  INFO node-api: DATABASE: Default connection established (package=@kth/mongo)
+09:27:34.539Z  INFO node-api: AGENDA: Trigger Agenda initialization on mongoDb connection event
+09:27:34.539Z  INFO node-api: AGENDA: Agenda is not yet initialized, continuing.
+09:27:34.539Z  INFO node-api: AGENDA: Initializing a new Agenda instance.
+09:27:34.542Z DEBUG node-api: DATABASE connected: 127.0.0.1@node (package=@kth/mongo)
+09:27:34.542Z DEBUG node-api: DATABASE driver version: 7.8.2 (package=@kth/mongo)
+09:27:34.542Z  INFO node-api: MongoDB: connected
+09:27:34.555Z  INFO node-api: AGENDA: Canceled 0 jobs
+09:27:34.556Z  INFO node-api: AGENDA: Purged 0 jobs
+09:27:34.556Z  INFO node-api: AGENDA: ready, configuring jobs...
+09:27:34.600Z  INFO node-api: AGENDA: Agenda instance configured and running
+09:27:34.602Z  INFO node-api: AGENDA: import: scheduled at Tue Nov 05 2024 06:20:00 GMT+0100 (Central European Standard Time)
 ```
