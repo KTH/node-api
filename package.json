@@ -1,7 +1,7 @@
 {
   "name": "node-api",
   "version": "2.0.0",
-  "description": "Node.js based API template application",
+  "description": "Node API is the backend service for node-web. It is also a template for Node API applications developed at KTH.",
   "private": true,
   "scripts": {
     "lint": "eslint \"**/*.js\" --quiet",
