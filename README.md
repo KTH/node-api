@@ -2,19 +2,26 @@
 
 ## Description
 
-Node API is the backend service for [node-web](https://github.com/KTH/node-web). It is also a template for Node API applications developed at KTH.
+Node API is the backend service for [node-web](https://github.com/KTH/node-web).
+It is also a template for Node API applications developed at KTH.
 
 ## Installation
 
 ### Install Dependencies
 
 ```sh
-$ npm install
+$ deno install
 ```
 
 ### Environment Variables
 
-Sensible defaults are set and the application can run locally with an empty `.env` file.
+Create a new `.env` file for local development.
+
+```
+NODE_ENV=development
+```
+
+Add other environment variables depending on your needs.
 
 | Name                 | Description                                                                          | Default Value                                        |
 | -------------------- | ------------------------------------------------------------------------------------ | ---------------------------------------------------- |
@@ -27,26 +34,31 @@ Sensible defaults are set and the application can run locally with an empty `.en
 
 ### Local Databases
 
-- It is recommended to use a local document database with [kth-node-backend](https://github.com/KTH/kth-node-backend)
+- It is recommended to use a local document database with
+  [kth-node-backend](https://github.com/KTH/kth-node-backend)
 
 ## Usage
 
 Start the application in local development mode:
 
 ```sh
-$ npm run start-dev
+$ deno task dev
 ```
 
-Access the Swagger UI on [localhost:3001/api/node/swagger](http://localhost:3001/api/node/swagger/index.html). Authorize with API key set with environment variable `API_KEYS`. Default value is `1234`.
+Access the Swagger UI on
+[localhost:3001/api/node/swagger](http://localhost:3001/api/node/swagger/index.html).
+Authorize with API key set with environment variable `API_KEYS`. Default value
+is `1234`.
 
 ## Running Tests
 
-Tests are setup with [Jest](https://jestjs.io/). Run them with:
+Doesn’t quite work yet. 😊
 
 ```
-$ npm test
+$ deno test
 ```
 
 ## Contact
 
-Node API is developed and maintained by [Team KTH Web](https://github.com/orgs/KTH/teams/web-team).
+Node API is developed and maintained by
+[Team KTH Web](https://github.com/orgs/KTH/teams/web-team).
