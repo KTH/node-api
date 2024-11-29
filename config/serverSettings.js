@@ -7,7 +7,8 @@
  * *************************************************
  *
  */
-const { getEnv, unpackMongodbConfig, unpackApiKeysConfig, devDefaults } = require('kth-node-configuration')
+const { getEnv, unpackMongodbConfig, unpackApiKeysConfig } = require('kth-node-configuration')
+const { devDefaults } = require('../utils/configuration.js')
 
 // DEFAULT SETTINGS used for dev, if you want to override these for you local environment, use env-vars in .env
 const devPrefixPath = devDefaults('/api/node')
