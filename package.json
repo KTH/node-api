@@ -4,8 +4,6 @@
   "description": "Node API is the backend service for node-web. It is also a template for Node API applications developed at KTH.",
   "private": true,
   "scripts": {
-    "lint": "eslint \"**/*.js\" --quiet",
-    "lint-v": "eslint \"**/*.js\" ",
     "prettier:all": "prettier --write \"**/*.js\"",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -39,9 +37,7 @@
     "swagger-ui-dist": "^5.18.2"
   },
   "devDependencies": {
-    "@kth/eslint-config-kth": "^3.6.0",
     "@types/jest": "^29.5.14",
-    "eslint": "^8.57.1",
     "husky": "^9.1.7",
     "jest": "^29.7.0",
     "jest-extended": "^4.0.2",

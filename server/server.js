@@ -1,4 +1,3 @@
-/* eslint-disable import/order */
 // But also try to get the order better
 const express = require('express')
 

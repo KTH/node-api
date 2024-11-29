@@ -37,8 +37,6 @@
  * - with code 2 if an unexpected error occured.
  */
 
-/* eslint-disable no-console */
-
 // @ts-check
 
 const path = require('path')
@@ -211,7 +209,6 @@ async function waitForServerToBeAvailable(baseUrl, timeoutMS) {
   for (let i = 0; i < 10 && !isAvailable; i++) {
     const endTS = new Date().getTime() + singleTimeout
 
-    // eslint-disable-next-line no-await-in-loop
     const { statusCode, error } = await fetchAsync(baseUrl, {}, singleTimeout)
     switch (statusCode) {
       default:
@@ -226,7 +223,6 @@ async function waitForServerToBeAvailable(baseUrl, timeoutMS) {
           console.log(`\n   (Waiting for server ${baseUrl})`)
           const currTS = new Date().getTime()
           if (currTS < endTS) {
-            // eslint-disable-next-line no-await-in-loop
             await new Promise(resolve => setTimeout(resolve, endTS - currTS))
           }
         } else {
@@ -248,7 +244,6 @@ async function listAllPathsAsync(baseUrl) {
 
   let response = { statusCode: INTERNAL_TIMEOUT_CODE }
   for (let i = 0; i < 3 && response.statusCode === INTERNAL_TIMEOUT_CODE; i++) {
-    // eslint-disable-next-line no-await-in-loop
     response = await fetchAsync(pathUrl)
   }
   const { statusCode, contentType, body, error } = response
@@ -311,7 +306,6 @@ async function runTestsWithServerAsync({ baseUrl }) {
 
       let result = { statusCode: INTERNAL_TIMEOUT_CODE }
       for (let i = 0; i < 3 && result.statusCode === INTERNAL_TIMEOUT_CODE; i++) {
-        // eslint-disable-next-line no-await-in-loop
         result = await fetchAsync(endpoint, { method: _method })
       }
       const { statusCode, error } = result

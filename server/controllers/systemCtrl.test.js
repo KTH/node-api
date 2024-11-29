@@ -90,7 +90,6 @@ describe(`System controller`, () => {
     const req = buildReq({})
     const res = buildRes()
 
-    // eslint-disable-next-line no-shadow
     const { status } = require('./systemCtrl')
 
     await status(req, res)

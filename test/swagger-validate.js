@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-
 /**
  * This script validates the project's swagger.json file.
  * It exits with code 0 iff no errors could be found.
@@ -8,7 +6,6 @@
  * so that it's also visible when run as Git pre-push hook.
  */
 
-// eslint-disable-next-line import/no-extraneous-dependencies
 const SwaggerParser = require('swagger-parser')
 
 process.stderr.write('\nValidating swagger.json\n')
