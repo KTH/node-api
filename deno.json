@@ -1,4 +1,5 @@
 {
+  "nodeModulesDir": "auto",
   "tasks": {
     "dev": "deno run --watch --unstable-detect-cjs --allow-read --allow-env --allow-sys --allow-net app.js"
   },
