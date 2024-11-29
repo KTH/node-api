@@ -5,7 +5,7 @@ const { Agenda } = require('@hokify/agenda')
 const mongoose = require('mongoose')
 const log = require('@kth/log')
 
-const packageFile = require('../../package.json')
+const packageFile = require('../../deno.json')
 const jobs = require('./jobs')
 
 const worker = { status: 'Startup', agenda: null, isStatusOkay, getLastRunJobs }
@@ -218,12 +218,12 @@ async function isAgendaOk() {
       return
     }
 
-    log.error('AGENDA: Agenda probe error: No agenda jobs defined in ' + packageFile.name)
+    log.error('AGENDA: Agenda probe error: No agenda jobs defined in ' + packageFile.appName)
     setAgendaHadProblem()
     restartAgenda()
     return
   } catch (err) {
-    log.error('AGENDA: Agenda probe error: Agenda is not responding in ' + packageFile.name, err)
+    log.error('AGENDA: Agenda probe error: Agenda is not responding in ' + packageFile.appName, err)
     setAgendaHadProblem()
     restartAgenda()
   }
@@ -248,7 +248,7 @@ async function getLastRunJobs() {
       failReason: job.attrs.failReason,
     }))
   } catch (err) {
-    log.error('getLastRunJobs:  Agenda is not responding in ' + packageFile.name, err)
+    log.error('getLastRunJobs:  Agenda is not responding in ' + packageFile.appName, err)
     return false
   }
 }

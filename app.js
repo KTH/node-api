@@ -10,14 +10,14 @@ const log = require('@kth/log')
 const config = require('./server/configuration').server
 const server = require('./server/server')
 
-const packageFile = require('./package.json')
+const packageFile = require('./deno.json')
 
 // catches uncaught exceptions
 process.on('uncaughtException', (err, origin) => {
   if (err.toString().match(/(ECONNRESET|MongoNetworkError)/i)) {
     log.warn(`DB connection reset origin (${origin})`, { err })
   } else {
-    log.error('APPLICATION EXIT - uncaught exception in ', packageFile.name)
+    log.error('APPLICATION EXIT - uncaught exception in ', packageFile.appName)
     log.error(`Uncaught Exception, origin (${origin})`, { err })
     process.exit(1)
   }
@@ -26,7 +26,7 @@ process.on('uncaughtException', (err, origin) => {
 process.on('unhandledRejection', reason => {
   // This line below provokes an uncaughtException and will be caught few lines
   // above
-  log.error(`unhandledRejection  ${packageFile.name}`, reason)
+  log.error(`unhandledRejection  ${packageFile.appName}`, reason)
   // throw reason
 })
 

@@ -15,10 +15,10 @@ const config = require('./configuration').server
  * ***********************
  */
 const log = require('@kth/log')
-const packageFile = require('../package.json')
+const packageFile = require('../deno.json')
 
 const logConfiguration = {
-  name: packageFile.name,
+  name: packageFile.appName,
   level: config.logging.log.level,
 }
 log.init(logConfiguration)

@@ -9,7 +9,7 @@ const { monitorRequest } = require('@kth/monitor')
 
 const configServer = require('../configuration').server
 const version = require('../../config/version')
-const packageFile = require('../../package.json')
+const packageFile = require('../../deno.json')
 const Agenda = require('../jobs/worker')
 
 const started = new Date()
@@ -47,7 +47,7 @@ async function getAbout(req, res) {
   const paths = getPaths()
 
   return res.json({
-    appName: packageFile.name,
+    appName: packageFile.appName,
     appVersion: packageFile.version,
     appDescription: packageFile.description,
     monitorUri: paths.system.monitor.uri,
@@ -99,7 +99,7 @@ function getCheckAPIKey(req, res) {
  */
 async function getStatus(req, res) {
   const statusData = {
-    appName: packageFile.name,
+    appName: packageFile.appName,
     appVersion: packageFile.version,
     hostname: os.hostname(),
     started,
