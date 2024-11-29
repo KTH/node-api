@@ -1,8 +1,27 @@
 {
   "tasks": {
-    "dev": "deno run --watch main.ts"
+    "dev": "deno run --watch app.js"
   },
   "imports": {
-    "@std/assert": "jsr:@std/assert@1"
+    "@hokify/agenda": "npm:@hokify/agenda@^6.3.0",
+    "@kth/appinsights": "npm:@kth/appinsights@^0.4.0",
+    "@kth/log": "npm:@kth/log@^4.0.7",
+    "@kth/mongo": "npm:@kth/mongo@^4.0.15",
+    "@kth/monitor": "npm:@kth/monitor@^4.3.1",
+    "@std/assert": "jsr:@std/assert@1",
+    "body-parser": "npm:body-parser@^1.20.3",
+    "cookie-parser": "npm:cookie-parser@^1.4.7",
+    "dotenv": "npm:dotenv@^16.4.5",
+    "express": "npm:express@^4.21.1",
+    "husky": "npm:husky@^9.1.7",
+    "kth-node-access-log": "npm:kth-node-access-log@^0.2.10",
+    "kth-node-api-common": "npm:kth-node-api-common@^1.0.10",
+    "kth-node-api-key-strategy": "npm:kth-node-api-key-strategy@^2.0.3",
+    "kth-node-configuration": "npm:kth-node-configuration@^2.1.0",
+    "kth-node-express-routing": "npm:kth-node-express-routing@^2.2.0",
+    "mongoose": "npm:mongoose@^8.8.3",
+    "passport": "npm:passport@^0.7.0",
+    "swagger-parser": "npm:swagger-parser@^10.0.3",
+    "swagger-ui-dist": "npm:swagger-ui-dist@^5.18.2"
   }
 }
