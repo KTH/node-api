@@ -1,7 +1,5 @@
 'use strict'
 
-require('dotenv').config()
-
 const { KthAppinsights } = require('@kth/appinsights')
 KthAppinsights.init({ name: 'node-api' })
 

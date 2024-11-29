@@ -10,7 +10,6 @@
     "npm:@kth/monitor@^4.3.1": "4.3.1",
     "npm:body-parser@^1.20.3": "1.20.3",
     "npm:cookie-parser@^1.4.7": "1.4.7",
-    "npm:dotenv@^16.4.5": "16.4.5",
     "npm:express@^4.21.1": "4.21.1",
     "npm:husky@^9.1.7": "9.1.7",
     "npm:kth-node-access-log@~0.2.10": "0.2.10",
@@ -3327,9 +3326,6 @@
         "semver@7.6.3"
       ]
     },
-    "dotenv@16.4.5": {
-      "integrity": "sha512-ZmdL2rui+eB2YwhsWzjInR8LldtZHGDoQ1ugH85ppHKwpUHL7j7rN0Ti9NCnGiQbhaZ11FpR+7ao1dNsmduNUg=="
-    },
     "dtrace-provider@0.8.8": {
       "integrity": "sha512-b7Z7cNtHPhH9EJhNNbbeqTcXB8LGFFZhq1PGgEvpeHlzd36bhbdTWoE/Ba/YguqpBSlAPKnARWhVlhunCMwfxg==",
       "dependencies": [
@@ -4097,7 +4093,6 @@
       "npm:@kth/monitor@^4.3.1",
       "npm:body-parser@^1.20.3",
       "npm:cookie-parser@^1.4.7",
-      "npm:dotenv@^16.4.5",
       "npm:express@^4.21.1",
       "npm:husky@^9.1.7",
       "npm:kth-node-access-log@~0.2.10",

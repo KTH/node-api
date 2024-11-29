@@ -15,7 +15,6 @@
     "@std/assert": "jsr:@std/assert@1",
     "body-parser": "npm:body-parser@^1.20.3",
     "cookie-parser": "npm:cookie-parser@^1.4.7",
-    "dotenv": "npm:dotenv@^16.4.5",
     "express": "npm:express@^4.21.1",
     "husky": "npm:husky@^9.1.7",
     "kth-node-access-log": "npm:kth-node-access-log@^0.2.10",
