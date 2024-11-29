@@ -4,7 +4,6 @@
   "description": "Node API is the backend service for node-web. It is also a template for Node API applications developed at KTH.",
   "private": true,
   "scripts": {
-    "prettier:all": "prettier --write \"**/*.js\"",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:unit-in-docker": "docker build --progress plain -t node-api . && bash -c 'LOCAL_IMAGE_ID=node-api docker-compose -f docker-compose-unit-tests.yml* up --abort-on-container-exit --build --remove-orphans'",
@@ -44,16 +43,7 @@
     "jest-sonar-reporter": "^2.0.0",
     "lint-staged": "^15.2.10",
     "nodemon": "^3.1.7",
-    "prettier": "^3.4.1",
     "swagger-parser": "^10.0.3"
-  },
-  "// (prettier)": "configuration version 2020-06-15 - might also reside in .prettierrc.json",
-  "prettier": {
-    "arrowParens": "avoid",
-    "printWidth": 120,
-    "semi": false,
-    "singleQuote": true,
-    "trailingComma": "es5"
   },
   "// (jest)": "configuration version 2020-06-15 (API+NPM) - might also reside as module.exports in jest.config.js",
   "jest": {
