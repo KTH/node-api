@@ -1,12 +1,6 @@
 // But also try to get the order better
 const express = require('express')
 
-// Load .env file in development mode
-const nodeEnv = process.env.NODE_ENV && process.env.NODE_ENV.toLowerCase()
-if (nodeEnv === 'development' || nodeEnv === 'dev' || !nodeEnv) {
-  require('dotenv').config()
-}
-
 // Now read the server config etc.
 const config = require('./configuration').server
 

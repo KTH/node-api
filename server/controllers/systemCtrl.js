@@ -103,7 +103,7 @@ async function getStatus(req, res) {
     appVersion: packageFile.version,
     hostname: os.hostname(),
     started,
-    env: process.env.NODE_ENV,
+    env: Deno.env.get('NODE_ENV'),
     jobs: await Agenda.getLastRunJobs(),
   }
   if (req.headers.accept === 'application/json') {

@@ -60,17 +60,17 @@ function buildNext(impl) {
 }
 
 describe(`Sample controller`, () => {
-  const OLD_ENV = process.env
+  const OLD_ENV = Deno.env
   const log = require('@kth/log')
   log.init({ name: 'Unit tests', level: 'debug', env: 'production' })
 
   beforeEach(() => {
     jest.resetModules()
-    process.env = { ...OLD_ENV }
+    Deno.env = { ...OLD_ENV }
     jest.clearAllMocks()
   })
   afterEach(() => {
-    process.env = OLD_ENV
+    Deno.env = OLD_ENV
   })
 
   test('should getData ok', async () => {

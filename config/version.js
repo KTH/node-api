@@ -1,4 +1,3 @@
 module.exports = {
-  dockerVersion: process.env.BUILD_ID,
-  nodeVersion: process.versions?.node,
+  dockerVersion: Deno.env.get('BUILD_ID'),
 }

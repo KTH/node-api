@@ -40,10 +40,10 @@ function checkEnvironment() {
       .filter(l => l.trim() && !l.startsWith('#'))
       .filter(l => l)
 
-    const isDevelopment = process.env.NODE_ENV !== 'production'
+    const isDevelopment = Deno.env.get('NODE_ENV') !== 'production'
     lines.forEach(l => {
       const name = l.substring(0, l.indexOf('=')).trim()
-      if (name && process.env[name] !== undefined) {
+      if (name && Deno.env.get(name) !== undefined) {
         log.debug(`   Environment variable '${name}' found`)
       } else if (isDevelopment) {
         log.debug(`   Environment variable '${name}' is missing, most likely there is a default value.`)

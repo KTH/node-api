@@ -68,7 +68,7 @@ function _isObject(input) {
  * @returns {object} with shape { baseUrl }
  */
 function getBaseUrl() {
-  const { INTEGRATION_TEST_BASEURL } = process.env
+  const { INTEGRATION_TEST_BASEURL } = Deno.env.toObject()
 
   let baseUrl = process.argv[2] || INTEGRATION_TEST_BASEURL
   if (!baseUrl) {
@@ -372,7 +372,7 @@ function checkServerResultsForProblems(serverConfiguration, serverResults) {
  * @returns {Promise}
  */
 async function exitAsync(exitCode = 0) {
-  const { INTEGRATION_TEST_SUCCESS_DELAY, INTEGRATION_TEST_FAILURE_DELAY } = process.env
+  const { INTEGRATION_TEST_SUCCESS_DELAY, INTEGRATION_TEST_FAILURE_DELAY } = Deno.env.toObject()
   const _delay = exitCode === 0 ? INTEGRATION_TEST_SUCCESS_DELAY : INTEGRATION_TEST_FAILURE_DELAY
 
   if (/\d+/.test(_delay)) {
