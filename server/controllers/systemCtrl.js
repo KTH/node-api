@@ -70,11 +70,6 @@ async function getMonitor(req, res) {
         required: true,
         db,
       },
-      {
-        key: 'agenda',
-        required: false,
-        agendaState: await Agenda.isStatusOkay(),
-      },
     ])
   } catch (error) {
     log.error(`Monitor failed`, error)
