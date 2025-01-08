@@ -1,20 +1,12 @@
 'use strict'
 
 const log = require('@kth/log')
-const nodeMongo = require('@kth/mongo')
+const mongoose = require('mongoose')
 const config = require('./configuration').server
 
-const mongoOptions = {
-  user: config.db.username,
-  pass: config.db.password,
-  ssl: config.db.ssl,
-  dbUri: config.db.authDatabase !== '' ? config.db.uri + `?authSource=${config.db.authDatabase}` : config.db.uri,
-  logger: log,
-}
-
-module.exports.connect = function connect() {
-  nodeMongo
-    .connect(mongoOptions)
+const connect = () => {
+  mongoose
+    .connect(config.mongodb.connectionString, { dbName: config.mongodb.databaseName })
     .then(() => {
       log.info('MongoDB: connected')
     })
@@ -22,3 +14,7 @@ module.exports.connect = function connect() {
       log.error({ err }, 'MongoDB: ERROR connecting DB')
     })
 }
+
+const isOk = () => mongoose.connection.readyState === 1
+
+module.exports = { connect, isOk }

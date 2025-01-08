@@ -3,10 +3,10 @@
 const os = require('os')
 const fs = require('fs')
 const log = require('@kth/log')
-const db = require('@kth/mongo')
 const { getPaths } = require('kth-node-express-routing')
 const { monitorRequest } = require('@kth/monitor')
 
+const db = require('../database')
 const configServer = require('../configuration').server
 const version = require('../../config/version')
 const packageFile = require('../../package.json')
@@ -69,11 +69,6 @@ async function getMonitor(req, res) {
         key: 'mongodb',
         required: true,
         db,
-      },
-      {
-        key: 'agenda',
-        required: false,
-        agendaState: await Agenda.isStatusOkay(),
       },
     ])
   } catch (error) {

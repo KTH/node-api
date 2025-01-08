@@ -15,6 +15,11 @@ jest.mock('@kth/log', () => ({
   error: jest.fn(() => {}),
 }))
 
+jest.mock('../database', () => ({
+  connect: jest.fn(),
+  isOk: jest.fn(() => true),
+}))
+
 jest.mock('../../server/configuration', () => ({
   server: {
     api_keys: '1234',

@@ -6,6 +6,7 @@ const { Agenda } = require('@hokify/agenda')
 const mongoose = require('mongoose')
 const log = require('@kth/log')
 
+const config = require('../configuration').server
 const packageFile = require('../../package.json')
 const jobs = require('./jobs')
 
@@ -58,7 +59,12 @@ async function showCurrentSchedule() {
 async function initAgenda() {
   if (agendaNotInitialized()) {
     log.info('AGENDA: Initializing a new Agenda instance.')
-    const agenda = new Agenda({ mongo: mongoose.connection.db, sort: { nextRunAt: 1 }, processEvery: '15 minutes' })
+    const { connectionString, databaseName } = config.mongodb
+    const agenda = new Agenda({
+      db: { address: connectionString, options: { dbName: databaseName } },
+      sort: { nextRunAt: 1 },
+      processEvery: '15 minutes',
+    })
 
     const lockLifetime = 14400000 // 4 hours
 

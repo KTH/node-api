@@ -7,7 +7,7 @@
  * *************************************************
  *
  */
-const { getEnv, unpackMongodbConfig, unpackApiKeysConfig, devDefaults } = require('kth-node-configuration')
+const { getEnv, unpackApiKeysConfig, devDefaults } = require('kth-node-configuration')
 
 // DEFAULT SETTINGS used for dev, if you want to override these for you local environment, use env-vars in .env
 const devPrefixPath = devDefaults('/api/node')
@@ -31,7 +31,10 @@ module.exports = {
   api_keys: unpackApiKeysConfig('API_KEYS', devApiKeys),
 
   // Services
-  db: unpackMongodbConfig('MONGODB_URI', devMongodb),
+  mongodb: {
+    connectionString: getEnv('MONGODB_URI', devMongodb),
+    databaseName: getEnv('DATABASE_NAME'),
+  },
 
   // Logging
   logging: {
