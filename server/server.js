@@ -52,11 +52,10 @@ server.set('case sensitive routing', true)
  * ******* REQUEST PARSING *******
  * *******************************
  */
-const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 
-server.use(bodyParser.json())
-server.use(bodyParser.urlencoded({ extended: true }))
+server.use(express.json())
+server.use(express.urlencoded({ extended: true }))
 server.use(cookieParser())
 
 /* ******************************
