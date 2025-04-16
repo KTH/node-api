@@ -11,13 +11,13 @@ on:
 
 jobs:
   Npm-Update:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v3
 
       - uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 22
 
       - run: |
           git config --global user.email "web-ci@kth.se"
@@ -34,8 +34,6 @@ jobs:
       - run: npm test
 
       - run: git add package.json package-lock.json
-
-      - run: git diff
 
       - name: Commit changes
         run: |
