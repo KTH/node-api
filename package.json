@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@hokify/agenda": "^6.3.0",
-    "@kth/appinsights": "^0.4.0",
+    "@kth/appinsights": "^0.4.1",
     "@kth/log": "^4.0.7",
     "@kth/monitor": "^4.3.1",
     "cookie-parser": "^1.4.7",
@@ -45,7 +45,7 @@
     "jest-extended": "^4.0.2",
     "jest-sonar-reporter": "^2.0.0",
     "lint-staged": "^15.5.1",
-    "nodemon": "^3.1.9",
+    "nodemon": "^3.1.10",
     "prettier": "^3.5.3",
     "swagger-parser": "^10.0.3"
   },
