@@ -13,8 +13,6 @@ updates:
       - dependencies
       - dependabot
       - web-team
-    reviewers:
-      - 'KTH/web-team'
     ignore:
       - dependency-name: 'eslint'
         versions: ['9.x']
