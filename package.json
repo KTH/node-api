@@ -25,16 +25,16 @@
     "@kth/log": "^4.0.7",
     "@kth/monitor": "^4.3.1",
     "cookie-parser": "^1.4.7",
-    "dotenv": "^16.5.0",
+    "dotenv": "^16.6.0",
     "express": "^4.21.2",
     "kth-node-access-log": "^0.2.10",
     "kth-node-api-common": "^1.0.10",
     "kth-node-api-key-strategy": "^2.0.3",
     "kth-node-configuration": "^2.1.0",
     "kth-node-express-routing": "^2.2.0",
-    "mongoose": "^8.16.0",
+    "mongoose": "^8.16.1",
     "passport": "^0.7.0",
-    "swagger-ui-dist": "^5.25.2"
+    "swagger-ui-dist": "^5.25.3"
   },
   "devDependencies": {
     "@kth/eslint-config-kth": "^3.6.0",
