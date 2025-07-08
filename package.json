@@ -32,9 +32,9 @@
     "kth-node-api-key-strategy": "^2.0.3",
     "kth-node-configuration": "^2.1.0",
     "kth-node-express-routing": "^2.2.0",
-    "mongoose": "^8.16.1",
+    "mongoose": "^8.16.2",
     "passport": "^0.7.0",
-    "swagger-ui-dist": "^5.26.0"
+    "swagger-ui-dist": "^5.26.2"
   },
   "devDependencies": {
     "@kth/eslint-config-kth": "^3.6.0",
