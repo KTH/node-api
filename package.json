@@ -34,7 +34,7 @@
     "kth-node-express-routing": "^2.3.0",
     "mongoose": "^8.19.0",
     "passport": "^0.7.0",
-    "swagger-ui-dist": "^5.29.2"
+    "swagger-ui-dist": "^5.29.3"
   },
   "devDependencies": {
     "@kth/eslint-config-kth": "^3.6.0",
