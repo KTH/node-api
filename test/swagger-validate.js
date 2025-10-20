@@ -9,7 +9,7 @@
  */
 
 // eslint-disable-next-line import/no-extraneous-dependencies
-const SwaggerParser = require('swagger-parser')
+const SwaggerParser = require('@apidevtools/swagger-parser')
 
 process.stderr.write('\nValidating swagger.json\n')
 

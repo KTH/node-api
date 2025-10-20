@@ -37,6 +37,7 @@
     "swagger-ui-dist": "^5.29.4"
   },
   "devDependencies": {
+    "@apidevtools/swagger-parser": "^12.1.0",
     "@kth/eslint-config-kth": "^3.6.0",
     "@types/jest": "^29.5.14",
     "eslint": "^8.57.1",
@@ -46,8 +47,7 @@
     "jest-sonar-reporter": "^2.0.0",
     "lint-staged": "^16.2.4",
     "nodemon": "^3.1.10",
-    "prettier": "^3.6.2",
-    "swagger-parser": "^10.0.3"
+    "prettier": "^3.6.2"
   },
   "// (prettier)": "configuration version 2020-06-15 - might also reside in .prettierrc.json",
   "prettier": {
