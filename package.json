@@ -32,7 +32,7 @@
     "kth-node-api-key-strategy": "^2.0.3",
     "kth-node-configuration": "^2.1.0",
     "kth-node-express-routing": "^2.3.0",
-    "mongoose": "^8.19.1",
+    "mongoose": "^8.19.2",
     "passport": "^0.7.0",
     "swagger-ui-dist": "^5.29.5"
   },
@@ -45,7 +45,7 @@
     "jest": "^29.7.0",
     "jest-extended": "^5.0.3",
     "jest-sonar-reporter": "^2.0.0",
-    "lint-staged": "^16.2.4",
+    "lint-staged": "^16.2.5",
     "nodemon": "^3.1.10",
     "prettier": "^3.6.2"
   },
