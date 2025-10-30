@@ -22,7 +22,7 @@
   "dependencies": {
     "@hokify/agenda": "^6.3.0",
     "@kth/appinsights": "^0.6.0",
-    "@kth/log": "^4.0.7",
+    "@kth/log": "^4.0.8",
     "@kth/monitor": "^4.3.2",
     "cookie-parser": "^1.4.7",
     "dotenv": "^16.6.1",
