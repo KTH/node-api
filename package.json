@@ -34,7 +34,7 @@
     "kth-node-express-routing": "^2.3.0",
     "mongoose": "^8.19.2",
     "passport": "^0.7.0",
-    "swagger-ui-dist": "^5.30.0"
+    "swagger-ui-dist": "^5.30.1"
   },
   "devDependencies": {
     "@apidevtools/swagger-parser": "^12.1.0",
