@@ -19,7 +19,7 @@ updates:
       - dependency-name: 'eslint'
         versions: ['9.x']
       - dependency-name: 'mongoose'
-        versions: ['8.x']
+        versions: ['9']
       - dependency-name: 'express'
         versions: ['5']
       - dependency-name: 'jest'
