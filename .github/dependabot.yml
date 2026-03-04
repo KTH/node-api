@@ -16,8 +16,6 @@ updates:
       - dependabot
       - web-team
     ignore:
-      - dependency-name: 'eslint'
-        versions: ['9.x']
       - dependency-name: 'mongoose'
         versions: ['9']
       - dependency-name: 'express'
