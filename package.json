@@ -38,7 +38,7 @@
   },
   "devDependencies": {
     "@apidevtools/swagger-parser": "^12.1.0",
-    "@kth/eslint-config-kth": "^4.0.0-2",
+    "@kth/eslint-config-kth": "^4.0.0",
     "@types/jest": "^29.5.14",
     "eslint": "^9.39.4",
     "husky": "^9.1.7",
