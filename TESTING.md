@@ -220,9 +220,6 @@ The integration-tests are based on scripts for Bash and Node.js. They can be run
 
 [Swagger](https://swagger.io/) and the file "swagger.json" are used to define, access and describe the endpoints of the application's REST API. The structure of "swagger.json" must follow the OPEN API specifications in version 2.0: https://swagger.io/specification/v2/
 
-> **Please note:**
-> There is also a version 3.0 of the [OPEN API specification](https://en.wikipedia.org/wiki/OpenAPI_Specification) available. This version is compatible with Swagger. It might still cause problems in your application because of some other code which relies on OPEN API 2.0, e.g. in the package "[kth-node-api-common](https://github.com/KTH/kth-node-api-common)".
-
 ## Usage
 
 > The validation is run with help of [swagger-parser](https://www.npmjs.com/package/swagger-parser).

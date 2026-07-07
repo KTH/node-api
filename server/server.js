@@ -71,7 +71,7 @@ require('./database').connect()
  */
 const { addPaths } = require('kth-node-express-routing')
 
-const { createApiPaths, notFoundHandler, errorHandler } = require('kth-node-api-common')
+const { createApiPaths, notFoundHandler, errorHandler } = require('@kth/kth-node-api-common')
 const swaggerData = require('../swagger.json')
 const { System } = require('./controllers')
 
