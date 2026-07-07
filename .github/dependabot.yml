@@ -20,5 +20,3 @@ updates:
         versions: ['9']
       - dependency-name: 'express'
         versions: ['5']
-      - dependency-name: 'dotenv'
-        versions: ['17']
