@@ -20,11 +20,5 @@ updates:
         versions: ['9']
       - dependency-name: 'express'
         versions: ['5']
-      - dependency-name: 'jest'
-        versions: ['30']
-      - dependency-name: '@types/jest'
-        versions: ['30']
-      - dependency-name: 'jest-extended'
-        versions: ['6']
       - dependency-name: 'dotenv'
         versions: ['17']
