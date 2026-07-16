@@ -30,7 +30,7 @@
     "express": "^4.22.2",
     "kth-node-access-log": "^0.2.10",
     "kth-node-api-key-strategy": "^2.0.3",
-    "kth-node-configuration": "^2.1.0",
+    "kth-node-configuration": "^2.2.0",
     "kth-node-express-routing": "^2.3.1",
     "mongoose": "^8.24.1",
     "passport": "^0.7.0",
@@ -40,14 +40,14 @@
     "@apidevtools/swagger-parser": "^12.1.0",
     "@kth/eslint-config-kth": "^4.1.0",
     "@types/jest": "^30.0.0",
-    "eslint": "^9.39.4",
+    "eslint": "^9.39.5",
     "husky": "^9.1.7",
     "jest": "^30.4.2",
     "jest-extended": "^7.0.0",
     "jest-sonar-reporter": "^2.0.0",
     "lint-staged": "^17.0.8",
     "nodemon": "^3.1.14",
-    "prettier": "^3.9.4"
+    "prettier": "^3.9.5"
   },
   "// (prettier)": "configuration version 2020-06-15 - might also reside in .prettierrc.json",
   "prettier": {
