@@ -27,7 +27,7 @@
     "@kth/monitor": "^4.3.2",
     "cookie-parser": "^1.4.7",
     "dotenv": "^17.4.2",
-    "express": "^4.22.2",
+    "express": "^5.2.1",
     "kth-node-access-log": "^1.0.0",
     "kth-node-api-key-strategy": "^3.0.0",
     "kth-node-configuration": "^2.2.0",
