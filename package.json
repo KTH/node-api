@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@hokify/agenda": "^6.3.0",
-    "@kth/appinsights": "^1.0.0",
+    "@kth/appinsights": "^1.1.0",
     "@kth/kth-node-api-common": "^3.0.0",
     "@kth/log": "^4.0.8",
     "@kth/monitor": "^4.3.2",
@@ -34,7 +34,7 @@
     "kth-node-express-routing": "^2.3.1",
     "mongoose": "^8.24.4",
     "passport": "^0.7.0",
-    "swagger-ui-dist": "^5.32.15"
+    "swagger-ui-dist": "^5.33.0"
   },
   "devDependencies": {
     "@apidevtools/swagger-parser": "^12.1.0",
@@ -47,7 +47,7 @@
     "jest-sonar-reporter": "^2.0.0",
     "lint-staged": "^17.5.1",
     "nodemon": "^3.1.14",
-    "prettier": "^3.9.6"
+    "prettier": "^3.9.7"
   },
   "// (prettier)": "configuration version 2020-06-15 - might also reside in .prettierrc.json",
   "prettier": {
