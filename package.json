@@ -37,10 +37,10 @@
     "swagger-ui-dist": "^5.33.0"
   },
   "devDependencies": {
-    "@apidevtools/swagger-parser": "^12.1.0",
+    "@apidevtools/swagger-parser": "^13.1.0",
     "@kth/eslint-config-kth": "^4.1.0",
     "@types/jest": "^30.0.0",
-    "eslint": "^9.39.5",
+    "eslint": "^10.11.0",
     "husky": "^9.1.7",
     "jest": "^30.5.2",
     "jest-extended": "^7.0.0",
