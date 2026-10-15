@@ -75,5 +75,10 @@
   "jestSonar": {
     "reportPath": "./test/reports",
     "reportFile": "test-reporter.xml"
+  },
+  "overrides": {
+    "@istanbuljs/load-nyc-config": {
+      "js-yaml": "5.4.3"
+    }
   }
 }
